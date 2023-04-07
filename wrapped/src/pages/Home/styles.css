@@ -9,19 +9,25 @@ div.container{
     background-color: #191414;
     width: 100%;
     height: 100vh;
-    padding: 9vh 10vw;
+    padding: 24vh 10vw;
 }
 
-div.logIn{
+.logIn{
     color:#1DB954;
     font-size: 1.3rem;
     padding: 1rem;
     background-color: #272727;
-    max-width: 60vw;
-    border-radius: 1.5em;
+    max-width: 200px;
+    border-radius: .5em;
     margin: 0 auto;
+    cursor: pointer;
+    user-select: none;
+    transition: all .25s ease-in-out;
 }
 
+.logIn:hover{
+  background-color: #444;
+}
 
 .title{
     color: #1DB954;
@@ -35,49 +41,18 @@ div.logIn{
     justify-content: center;
 }
 
+.tagline{
+  color: #1DB954;
+  font-size: 1.5rem;
+  margin: 3vh 0vw 8vh 0vw;
+}
+
 .title img{
     width: 2.6em;
     height: 2.6em;
 }
 
-
-
-.cube {
-    width: 600px;
-    height: 600px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform-style: preserve-3d;
-    transform: rotateX(240deg) rotateY(-5deg) rotateZ(-155deg);
-  }
-  
-  .top, .front, .left {
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    position: absolute;
-    border-radius: 10%;
-  }
-  
-  .top {
-    transform: translateZ(-600px);
-    background: grey;
-  }
-  
-  .front {
-    transform: rotateX(90deg);
-    transform-origin: bottom;
-    background: grey;
-  }
-  
-  .left {
-    width: 600px;
-    transform: translateZ(-600px) rotateY(90deg);
-    transform-origin: right;
-    background: grey;
-  }
-
-
-
+.content{
+  width: 100%;
+  height: 100vh;
+}
