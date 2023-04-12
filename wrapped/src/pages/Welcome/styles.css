@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree&display=swap');
+
+*{
+    box-sizing: border-box;
+    font-family: 'Figtree', sans-serif;
+    margin: 0;
+}
+
+.container{
+  background-color: #224b2b;
+  width: 100%;
+  height: 100vh;
+  padding: 2vh 2vw;
+  display: grid;
+  background-image: url('../../layered-peaks-haikei.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.title{
+  position: absolute;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #eee;
+  text-align: left;
+  max-width: 10%;
+  max-height: 10% ;
+}
+    
+.content{
+  width: 100%;
+  height: 100vh;
+}
+
+.box-top {  
+  margin-top: 100px;
+  margin-bottom: -65px;
+}
+.spotify{
+  max-width: 200px;
+  position: absolute;
+  z-index: 1;
+}
+
+.logIn{
+  color:#eee;
+  font-size: 1.3rem;
+  padding: 1rem;
+  background-color: #5857F3;
+  max-width: 200px;
+  border-radius: .5em;
+  margin: 0 auto;
+  cursor: pointer;
+  user-select: none;
+  transition: all .25s ease-in-out;
+}
+
+.logIn:hover{
+  background-color: #0a22ba;
+}
+
+.tagline{
+  color: #eee;
+  font-size: 1.5rem;
+  margin: 3vh 0vw 8vh 0vw;
+  font-weight: bold;
+}
+
+.about{
+  padding: 10vh 0vw;
+}
+
