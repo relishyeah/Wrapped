@@ -6,6 +6,8 @@
     margin: 0;
 }
 
+
+
 .container{
   background-color: #224b2b;
   width: 100%;
@@ -20,7 +22,7 @@
 
 .title{
   position: absolute;
-  font-size: 3rem;
+  font-size: 5vmin;
   font-weight: bold;
   color: #eee;
   text-align: left;
@@ -33,19 +35,64 @@
   height: 100vh;
 }
 
-.box-top {  
-  margin-top: 100px;
-  margin-bottom: -65px;
+svg{
+  height: auto;
+  max-width: 250px;
+  min-width: 200px;
+  left:0;
+  right:0;
 }
-.spotify{
-  max-width: 200px;
+
+.box-top {  
+  position: relative;
+  margin-top: 10vh;
+  z-index: 10;
+}
+
+.box-top2 {  
+  position: relative;
+  margin-top: 2vh;
+  margin-bottom: 8vh;
+  transition:all .5s ease-in-out;
+  z-index: 3;
+}
+
+svg.spotify{
   position: absolute;
-  z-index: 1;
+  top:-30%;
+  width:20%;
+  height: auto;
+  margin:auto;
+  z-index: 2;
+}
+
+svg.spotify2{
+  position: absolute;
+  margin:auto;
+  width:20%;
+  height: auto;
+  z-index:2;
+  top:-45%;
+  left:0;
+  transition: all .5s ease-in-out;
+}
+
+.present{
+  position: relative;;
+}
+
+.box-bottom{
+  z-index: 3;
+  left:0;
+  margin: auto;
+  max-width: 250px;
+  position: relative;;
 }
 
 .logIn{
   color:#eee;
-  font-size: 1.3rem;
+  position: relative;
+  font-size: 1rem;
   padding: 1rem;
   background-color: #5857F3;
   max-width: 200px;
@@ -62,12 +109,12 @@
 
 .tagline{
   color: #eee;
-  font-size: 1.5rem;
-  margin: 3vh 0vw 8vh 0vw;
+  font-size: 4vmin;
+  right:0;
+  margin: 3vh auto 5vh auto;
   font-weight: bold;
 }
 
 .about{
   padding: 10vh 0vw;
 }
-
