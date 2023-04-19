@@ -3,7 +3,14 @@ import './styles.css';
 
 const Welcome = () => {
     const [animate,setAnimate] = useState(false)
+    const [shake,setShake] = useState(false)
 
+    const openPresent = () => {
+        setShake(!shake)
+        setTimeout(() => {
+            setAnimate(!animate);
+          }, 750);
+    }
     return (
         
     <div className='container'>
@@ -13,18 +20,48 @@ const Welcome = () => {
         <div className="content">
             
 
-            <svg className={animate ?"box-top2": "box-top"}viewBox="0 0 483 238" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg className={animate ? "box-top3" : shake ?"box-top2": "box-top"}viewBox="0 0 483 238" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M0 135C0 132.791 1.79086 131 4 131H479C481.209 131 483 132.791 483 135V234C483 236.209 481.209 238 479 238H4.00001C1.79087 238 0 236.209 0 234V135Z" fill="#3B37CA"/>
                 <path d="M247.914 121.018C338.319 124.862 437.093 92.2163 406.265 38.3154C375.437 -15.5855 282.928 40.142 247.914 121.018Z" stroke="#DADBDD" stroke-width="30"/>
                 <path d="M235.465 121.018C145.06 124.862 46.286 92.2163 77.1136 38.3154C107.941 -15.5855 200.451 40.142 235.465 121.018Z" stroke="#DADBDD" stroke-width="30"/>
                 <path d="M272.999 132L273 238L211 238L211 132L272.999 132Z" fill="#DADBDD"/>
-                </svg>
+            </svg>
 
            
             <div className="present">
-                <svg  className="box-bottom"viewBox="0 0 459 289" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="459" height="289" rx="4" fill="#3B37CA"/>
-                    <path d="M260.999 0L261 289L199 289L199 1.68077e-06L260.999 0Z" fill="#DADBDD"/>
+                
+                <svg className="box-bottom"
+                     viewBox="0 0 482 289" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="11" width="459" height="289" rx="4" fill="#3B37CA"/>
+                    <g className={animate?'noShadow': ''} filter="url(#filter0_d_42_4)">
+                    <rect x="272" width="195" height="1" rx="0.5" fill="#3B37CA"/>
+                    </g>
+                    <g className={animate?'noShadow': ''} filter="url(#filter1_d_42_4)">
+                    <rect x="14" width="196" height="1" rx="0.5" fill="#3B37CA"/>
+                    </g>
+                    <path d="M271.999 0L272 289L210 289L210 1.68077e-06L271.999 0Z" fill="#DADBDD"/>
+                    <defs>
+                    <filter id="filter0_d_42_4" x="268" y="0" width="203" height="9" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                    <feOffset dy="4"/>
+                    <feGaussianBlur stdDeviation="2"/>
+                    <feComposite in2="hardAlpha" operator="out"/>
+                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.75 0"/>
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_42_4"/>
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_42_4" result="shape"/>
+                    </filter>
+                    <filter id="filter1_d_42_4" x="10" y="0" width="204" height="9" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                    <feOffset dy="4"/>
+                    <feGaussianBlur stdDeviation="2"/>
+                    <feComposite in2="hardAlpha" operator="out"/>
+                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.75 0"/>
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_42_4"/>
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_42_4" result="shape"/>
+                    </filter>
+                    </defs>
                 </svg>
 
                 <svg className={animate ? "spotify2" : "spotify"} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
@@ -45,7 +82,7 @@ const Welcome = () => {
             </div>
             
 
-            <div onClick={() => setAnimate(!animate)} className='logIn'>
+            <div onClick={() => openPresent() } className='logIn'>
                     See yours
             </div>
             
