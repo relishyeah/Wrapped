@@ -1,12 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Figtree&display=swap');
 
 *{
-    box-sizing: border-box;
-    font-family: 'Figtree', sans-serif;
-    margin: 0;
+  box-sizing: border-box;
+  font-family: 'Figtree', sans-serif;
+  margin: 0;
 }
-
-
 
 .container{
   background-color: #224b2b;
@@ -56,6 +54,7 @@ svg{
   z-index: 3;
   animation: tilt-shaking 0.25s infinite;
 }
+
 .box-top3 {  
   position: relative;
   margin-top: 0vh;
@@ -68,7 +67,7 @@ svg.spotify{
   position: absolute;
   top:-30%;
   width:40vw;
-  max-width: 175px;;
+  max-width: 175px;
   height: auto;
   margin:auto;
   z-index: 2;

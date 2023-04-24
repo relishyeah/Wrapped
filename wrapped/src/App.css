@@ -1,6 +1,35 @@
 .App {
   text-align: center;
 }
+*{
+  box-sizing: border-box;
+  font-family: 'Figtree', sans-serif;
+  margin: 0;
+}
+
+
+
+.container{
+background-color: #224b2b;
+width: 100%;
+height: 100vh;
+padding: 2vh 2vw;
+display: grid;
+background-image: url('layered-peaks-haikei.svg');
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover;
+}
+
+.title{
+position: absolute;
+font-size: 5.5vmin;
+font-weight: bold;
+color: #eee;
+text-align: left;
+max-width: 10%;
+max-height: 10% ;
+}
 
 
 

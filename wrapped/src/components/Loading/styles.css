@@ -1,0 +1,57 @@
+.loadingContainer{
+    position: relative;
+    margin-top: 19vh;
+    overflow-x: hidden;
+    height:40vh;
+}
+.loadingIcon{
+    position: absolute;
+    width:40vw;
+    max-width: 175px;
+    height: auto;
+    left:0;
+    right:0;
+    margin: auto;
+    animation: spinRoll 6s linear 1 forwards;
+}
+
+.progressContainer{
+    position: relative;
+    height:5vh;
+    width:298px;
+    border-radius:2.5em;
+    background-color: #0a22ba;
+    left:0;
+    right:0;
+    margin: calc(175px + 5vh) auto auto auto;
+    
+}
+.progressBar{
+    position: absolute;
+    height:5vh;
+    max-width: 302px;
+    background-color: #177156;
+    left:-2px;
+    margin: auto;
+    transition: width 10s ease-out,
+}
+
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+
+@keyframes spinRoll{
+    0% {
+    transform:rotate(0deg);
+    opacity:1;
+    }
+    99%{
+    opacity:1;
+    transform:rotate(720deg);
+    }
+    100% {
+    opacity: 0;
+    transform:rotate(720deg);
+    }
+  }

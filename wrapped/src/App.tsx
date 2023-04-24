@@ -7,12 +7,18 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   return (
     <div className="App">
-      
+      <div className="container">
+        <div className="title">
+              Wrapped,<br/>Wrapped
+        </div>
+        { !loggedIn ?
+        <Welcome setLoggedIn={setLoggedIn}/>:
+        <Home/>
+        }
+
+      </div>
  
-    { !loggedIn ?
-      <Welcome/>:
-      <Home/>
-    }
+    
     </div>
   );
 }

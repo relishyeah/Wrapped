@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './styles.css';
 
-const Welcome = () => {
+const Welcome = (props:any) => {
     const [animate,setAnimate] = useState(false)
     const [shake,setShake] = useState(false)
 
@@ -10,13 +10,13 @@ const Welcome = () => {
         setTimeout(() => {
             setAnimate(!animate);
           }, 750);
+          setTimeout(() => {
+            props.setLoggedIn(true);
+          }, 3000);
     }
     return (
         
-    <div className='container'>
-        <div className="title">
-            Wrapped,<br/>Wrapped
-        </div>
+       
         <div className="content">
             
 
@@ -71,12 +71,6 @@ const Welcome = () => {
             
             </div>
 
-            
-        
-
-            
-            
-            
             <div className="tagline">
                 Unwrap your listening, year by year
             </div>
@@ -84,11 +78,9 @@ const Welcome = () => {
 
             <div onClick={() => openPresent() } className='logIn'>
                     See yours
-            </div>
+            </div>  
             
-        </div>
-
-    </div>  );
+        </div> );
 }
  
 export default Welcome;
