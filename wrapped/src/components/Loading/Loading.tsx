@@ -7,6 +7,7 @@ const Loading = (props:any) => {
 
   useEffect(() => {
     setPercent(400)
+    setTimeout(()=> props.setLoading(false),1000 * 6)
   }, []);
 
   return (

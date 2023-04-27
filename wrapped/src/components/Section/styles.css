@@ -1,0 +1,84 @@
+.section{
+    color:#fff;
+    height: 20vh;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    transition: all 2s;
+    left:0;
+}
+
+.spacer{
+    aspect-ratio: 1300/200;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover ;
+    position: absolute;
+    bottom:0;
+    z-index: 4;
+}
+
+.spacer-top{
+    aspect-ratio: 1350/100;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover ;
+    position: absolute;
+    top:0;
+    z-index: 4;
+}
+
+.layer0{
+    background-image: url('./wave0.svg');
+}
+
+.layer1{
+    background-image: url('./wave1.svg');
+}
+
+.layer2{
+    background-image: url('./wave2.svg');
+}
+
+.layer3{
+    background-image: url('./wave3.svg');
+}
+
+.layer4{
+    background-image: url('./wave4.svg');
+}
+
+
+h1{
+    position: relative;
+    padding: 2vh 4vw 2vh 4vw;
+    z-index: 12;
+    opacity: 0;
+}
+
+select{
+    height: 40%;
+    width: 10vw;
+}
+
+
+.button{
+    color:#eee;
+    position: relative;
+    font-size: 1rem;
+    padding: 1rem;
+    background-color: #5857F3;
+    border-radius: .5em;
+    margin: 0 auto;
+    cursor: pointer;
+    user-select: none;
+    transition: all .25s ease-in-out;
+    height: 6vh;
+  }
+  
+  .button:hover{
+    background-color: #0a22ba;
+  }
