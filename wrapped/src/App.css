@@ -25,7 +25,12 @@ color: #eee;
 text-align: left;
 max-width: 10%;
 max-height: 10% ;
+top:0;
+z-index: 1000;
+transition-duration: 2000ms;
 }
 
-
+.moveMe{
+  transform: translateY(-100%) ;
+}
 
