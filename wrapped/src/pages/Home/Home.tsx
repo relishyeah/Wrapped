@@ -19,7 +19,7 @@ const Home = (props:any) => {
 
       <Section backgroundColor='#4A47DE' justify='left' title="Your Top Genres"  position={props.loading?start[3]:finish[3]} id='layer3' />
 
-      <Section backgroundColor='#5857F3' justify='center' title="Share this you luddite"  position={props.loading?start[4]:finish[4]} id='layer4' />
+      <Section backgroundColor='#5857F3' justify='center' title="Share this you luddite"  position={props.loading?start[4]:finish[4]} id='layer4' share={true} />
       
     </div>
     

@@ -1,9 +1,21 @@
 import React, {useState} from 'react';
 import './styles.css';
+import { authorize } from '../../helper';
 
 const Welcome = (props:any) => {
     
     const [shake,setShake] = useState(false)
+
+    function generateRandomString(length: number) {
+        let text = '';
+        let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      
+        for (let i = 0; i < length; i++) {
+          text += possible.charAt(Math.floor(Math.random() * possible.length));
+        }
+        return text;
+      }
+
 
     const openPresent = () => {
         setShake(!shake)
@@ -11,6 +23,7 @@ const Welcome = (props:any) => {
             props.setAnimate(true);
           }, 750);
           setTimeout(() => {
+            authorize()
             props.setLoggedIn(true);
             props.setPercent(400)
             setTimeout(()=> props.setLoading(false),1000 * 6)
@@ -21,7 +34,6 @@ const Welcome = (props:any) => {
        
         <div className="content">
             
-
             <svg className={props.animate ? "box-top open" : shake ?"box-top shake": "box-top"}viewBox="0 0 483 238" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M0 135C0 132.791 1.79086 131 4 131H479C481.209 131 483 132.791 483 135V234C483 236.209 481.209 238 479 238H4.00001C1.79087 238 0 236.209 0 234V135Z" fill="#3B37CA"/>
                 <path d="M247.914 121.018C338.319 124.862 437.093 92.2163 406.265 38.3154C375.437 -15.5855 282.928 40.142 247.914 121.018Z" stroke="#DADBDD" stroke-width="30"/>

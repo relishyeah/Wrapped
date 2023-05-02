@@ -36,7 +36,6 @@
     left:0;
     right:0;
     margin: calc(175px + 5vh) auto auto auto;
-    outline: dashed green;
     
 }
 .progressBar{
@@ -47,8 +46,6 @@
     left:-2px;
     margin: auto;
     transition: width 10s ease-out, opacity .1s ease-out;
-    outline: dashed green;
-
 
 }
 
