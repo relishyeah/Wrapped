@@ -2,19 +2,17 @@ import React, {useState} from 'react';
 import './styles.css';
 import { authorize } from '../../helper';
 
-const Welcome = (props:any) => {
+export type WelcomeProps = {
+    setAnimate: (b:boolean)=> void;
+    setLoggedIn: (b:boolean)=> void;
+    setLoading: (b:boolean)=> void;
+    setPercent:(n:number) => void;
+    animate: boolean;
+}
+
+const Welcome = (props:WelcomeProps) => {
     
     const [shake,setShake] = useState(false)
-
-    function generateRandomString(length: number) {
-        let text = '';
-        let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-      
-        for (let i = 0; i < length; i++) {
-          text += possible.charAt(Math.floor(Math.random() * possible.length));
-        }
-        return text;
-      }
 
 
     const openPresent = () => {
@@ -24,9 +22,6 @@ const Welcome = (props:any) => {
           }, 750);
           setTimeout(() => {
             authorize()
-            props.setLoggedIn(true);
-            props.setPercent(400)
-            setTimeout(()=> props.setLoading(false),1000 * 6)
           }, 3000);
     }
     return (

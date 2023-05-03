@@ -19,15 +19,16 @@ display: grid;
 
 .title{
 position: absolute;
-font-size: 5.5vmin;
+font-size: 1.5rem;
 font-weight: bold;
 color: #eee;
 text-align: left;
-max-width: 10%;
-max-height: 10% ;
+width:400px;
+height: 200px;
 top:0;
 z-index: 1000;
 transition-duration: 2000ms;
+overflow:hidden;
 }
 
 .moveMe{

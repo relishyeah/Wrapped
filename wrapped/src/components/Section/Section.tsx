@@ -1,10 +1,6 @@
 import React from 'react'
 import './styles.css';
 
-export type body = {
-    title:string;
-
-}
 export type SectionProps = {
     justify?: 'left' | 'right'| 'center';
     backgroundColor?:string;

@@ -18,15 +18,6 @@
   background-size: cover;
 }
 
-.title{
-  position: absolute;
-  font-size: 5.5vmin;
-  font-weight: bold;
-  color: #eee;
-  text-align: left;
-  max-width: 10%;
-  max-height: 10% ;
-}
     
 .content{
   width: 100%;

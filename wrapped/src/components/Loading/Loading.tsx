@@ -7,7 +7,6 @@ const Loading = (props:any) => {
 
   useEffect(() => {
     if(props.loggedIn){
-      console.log(123)
       setPercent(400)
       setTimeout(()=> props.setLoading(false),1000 * 6)}
   }, [props.loggedIn]);
