@@ -10,6 +10,9 @@ function App() {
   const [loading, setLoading] = useState(true)
   const [animate,setAnimate] = useState(false)
   const [percent,setPercent] = useState(0);
+  const [name,setName] = useState('')
+  const [photo,setPhoto] = useState('')
+
   return (
     <BrowserRouter>
       <div className="App">
@@ -20,9 +23,9 @@ function App() {
       <Routes>
         <Route path='/' element={<Welcome setAnimate={setAnimate} setLoading={setLoading} setLoggedIn={setLoggedIn} animate={animate} setPercent={setPercent}  />}/>
 
-        <Route path='/callback' element={<Callback setLoading = {setLoading} setLoggedIn={setLoggedIn} />} />
+        <Route path='/callback' element={<Callback setLoading = {setLoading} setLoggedIn={setLoggedIn} setName={setName} setPhoto={setPhoto}/>} />
       </Routes>
-      <Home loggedIn ={loggedIn} loading={loading} setLoading={setLoading} animate={animate}/>
+      <Home loggedIn ={loggedIn} loading={loading} setLoading={setLoading} animate={animate} name={name} photo={photo}/>
         
          </div>
   

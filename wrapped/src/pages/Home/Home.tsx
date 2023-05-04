@@ -12,14 +12,17 @@ const Home = (props:any) => {
     <div className='content'>
       <Loading loggedIn={props.loggedIn} setLoading={props.setLoading}/>
       
-      <Section backgroundColor='#1515A3' justify='left' title="Your Top Artists" position={props.loading?start[0]:finish[0]} id='layer0'/>
+      <Section backgroundColor='#1515A3' justify='left' title="Your Top Artists" position={props.loading?start[0]:finish[0]} id='layer0'
+      name={props.name}
+      photo={props.photo}/>
+
       <Section backgroundColor='#2A27B6' justify='left' title="Your Top Songs"  position={props.loading?start[1]:finish[1]} id='layer1' />
 
       <Section backgroundColor='#3B37CA' justify='left' title="Your Top Albums"  position={props.loading?start[2]:finish[2]} id='layer2' />
 
       <Section backgroundColor='#4A47DE' justify='left' title="Your Top Genres"  position={props.loading?start[3]:finish[3]} id='layer3' />
 
-      <Section backgroundColor='#5857F3' justify='center' title="Share this you luddite"  position={props.loading?start[4]:finish[4]} id='layer4' share={true} />
+      <Section backgroundColor='#5857F3' justify='center' title="Share this you luddite"  position={props.loading?start[4]:finish[4]} id='layer4' />
       
     </div>
     

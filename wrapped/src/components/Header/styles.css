@@ -1,0 +1,28 @@
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.photo{
+    position: relative;
+    top:0;
+    bottom:0;
+    left:1vh;
+    z-index: 2000;
+    margin-left: 3vw;
+    margin-right: 3vw;
+}
+.headerTitle{
+    flex:1;
+    font-size: 6.5vmin;  
+    text-align: justify;
+    text-align-last: left;
+}
+
+img{
+    width:10vh;
+    height:10vh;
+    clip-path: circle();
+    object-fit: cover;
+}
