@@ -16,7 +16,7 @@ const Home = (props:any) => {
       name={props.name}
       photo={props.photo}/>
 
-      <Section backgroundColor='#2A27B6' justify='left' title="Your Top Songs"  position={props.loading?start[1]:finish[1]} id='layer1' />
+      <Section backgroundColor='#2A27B6' justify='left'   position={props.loading?start[1]:finish[1]} id='layer1'  years={props.years} />
 
       <Section backgroundColor='#3B37CA' justify='left' title="Your Top Albums"  position={props.loading?start[2]:finish[2]} id='layer2' />
 

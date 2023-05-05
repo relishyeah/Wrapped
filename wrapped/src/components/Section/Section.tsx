@@ -1,5 +1,6 @@
 import React from 'react'
 import {Header} from '../Header/Header'
+import {Years} from '../Years/Years'
 import './styles.css';
 
 export type SectionProps = {
@@ -12,36 +13,22 @@ export type SectionProps = {
     child?: React.FC;
     name?: string;
     photo?:string;
+    years?:number;
 }
 
 const Section = (props:SectionProps) =>{
 
     return(
         <>
-        <div className= {"section "} style ={{'backgroundColor': props.backgroundColor,
+        <div className= {"section "} 
+            style ={{'backgroundColor': props.backgroundColor,
           'justifyContent':props.justify,
-          'top':props.position}}>
+          'top':props.position}}
+          onClick={() => console.log(13)}>
             <div className={"spacer-top "+props.id}></div>
             {props.name &&props.photo &&
-            <Header name={props.name} photo={props.photo}/>
-            }
-            {props.share ?
-            <>
-            <h2>Share my </h2>
-            <select name="" id="languages">
-                <option value="">...</option>
-            </select>
-            <h2>,</h2>
-            <select name="" id="languages">
-                <option value="">...</option>
-            </select>
-            <h2>, and</h2>
-            <select name="" id="languages">
-                <option value="">...</option>
-            </select>
-            <div className="button">Go</div>
-            </>
-            : <></>}
+            <Header name={props.name} photo={props.photo}/> }
+            {props.years && <Years years={props.years}/>}
         </div>
 
         

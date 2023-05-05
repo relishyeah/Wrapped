@@ -31,8 +31,8 @@ const Welcome = (props:WelcomeProps) => {
             
             <svg className={props.animate ? "box-top open" : shake ?"box-top shake": "box-top"}viewBox="0 0 483 238" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M0 135C0 132.791 1.79086 131 4 131H479C481.209 131 483 132.791 483 135V234C483 236.209 481.209 238 479 238H4.00001C1.79087 238 0 236.209 0 234V135Z" fill="#3B37CA"/>
-                <path d="M247.914 121.018C338.319 124.862 437.093 92.2163 406.265 38.3154C375.437 -15.5855 282.928 40.142 247.914 121.018Z" stroke="#DADBDD" stroke-width="30"/>
-                <path d="M235.465 121.018C145.06 124.862 46.286 92.2163 77.1136 38.3154C107.941 -15.5855 200.451 40.142 235.465 121.018Z" stroke="#DADBDD" stroke-width="30"/>
+                <path d="M247.914 121.018C338.319 124.862 437.093 92.2163 406.265 38.3154C375.437 -15.5855 282.928 40.142 247.914 121.018Z" stroke="#DADBDD" strokeWidth="30"/>
+                <path d="M235.465 121.018C145.06 124.862 46.286 92.2163 77.1136 38.3154C107.941 -15.5855 200.451 40.142 235.465 121.018Z" stroke="#DADBDD" strokeWidth="30"/>
                 <path d="M272.999 132L273 238L211 238L211 132L272.999 132Z" fill="#DADBDD"/>
             </svg>
 
@@ -50,8 +50,8 @@ const Welcome = (props:WelcomeProps) => {
                     </g>
                     <path d="M271.999 0L272 289L210 289L210 1.68077e-06L271.999 0Z" fill="#DADBDD"/>
                     <defs>
-                    <filter id="filter0_d_42_4" x="268" y="0" width="203" height="9" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                    <filter id="filter0_d_42_4" x="268" y="0" width="203" height="9" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix"/>
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
                     <feOffset dy="4"/>
                     <feGaussianBlur stdDeviation="2"/>
@@ -60,8 +60,8 @@ const Welcome = (props:WelcomeProps) => {
                     <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_42_4"/>
                     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_42_4" result="shape"/>
                     </filter>
-                    <filter id="filter1_d_42_4" x="10" y="0" width="204" height="9" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                    <filter id="filter1_d_42_4" x="10" y="0" width="204" height="9" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                    <feFlood floodOpacity="0" result="BackgroundImageFix"/>
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
                     <feOffset dy="4"/>
                     <feGaussianBlur stdDeviation="2"/>

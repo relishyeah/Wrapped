@@ -135,7 +135,7 @@ const playListCall = async (id:string,accessToken:string|null ):Promise<playlist
 }
 
 
-  export const getPlaylists = async(setName:(s:string)=>void,setPhoto:(s:string)=>void)=> {
+  export const getPlaylists = async(setName:(s:string)=>void,setPhoto:(s:string)=>void,setYears:(n:number)=>void)=> {
     const  [id,name,photo] = await getProfile()
     setName(name)
     setPhoto(photo)
@@ -144,6 +144,7 @@ const playListCall = async (id:string,accessToken:string|null ):Promise<playlist
     let now = Date.now()
     const playlists =  await playListCall(id,accessToken)
 
+    setYears(playlists.length)
     const tracks = await getTracks(playlists,accessToken)
     let later = Date.now()
     console.log(later-now)

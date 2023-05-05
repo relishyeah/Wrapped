@@ -12,7 +12,7 @@ function App() {
   const [percent,setPercent] = useState(0);
   const [name,setName] = useState('')
   const [photo,setPhoto] = useState('')
-
+  const [years,setYears] = useState(0)
   return (
     <BrowserRouter>
       <div className="App">
@@ -23,9 +23,9 @@ function App() {
       <Routes>
         <Route path='/' element={<Welcome setAnimate={setAnimate} setLoading={setLoading} setLoggedIn={setLoggedIn} animate={animate} setPercent={setPercent}  />}/>
 
-        <Route path='/callback' element={<Callback setLoading = {setLoading} setLoggedIn={setLoggedIn} setName={setName} setPhoto={setPhoto}/>} />
+        <Route path='/callback' element={<Callback setLoading = {setLoading} setLoggedIn={setLoggedIn} setName={setName} setPhoto={setPhoto} setYears={setYears}/>} />
       </Routes>
-      <Home loggedIn ={loggedIn} loading={loading} setLoading={setLoading} animate={animate} name={name} photo={photo}/>
+      <Home loggedIn ={loggedIn} loading={loading} setLoading={setLoading} animate={animate} name={name} photo={photo} years={years}/>
         
          </div>
   
