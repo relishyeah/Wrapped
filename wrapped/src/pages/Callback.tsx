@@ -8,6 +8,9 @@ export type callbackProps ={
     setName:(s:string)=>void;
     setPhoto:(s:string)=>void;
     setYears:(n:number)=>void;
+    setExplicit:(a:Array<string|number>)=>void;
+    setTopArtist:(a:Array<string|number>)=>void;
+    setTopAlbum:(a:Array<string|number>)=>void;
 }
 
 const Callback = (props:callbackProps) => {
@@ -15,7 +18,7 @@ const Callback = (props:callbackProps) => {
     props.setLoading(true)
     props.setLoggedIn(true)
     callback().then(()=>{
-      let playlists = getPlaylists(props.setName,props.setPhoto,props.setYears)
+      let playlists = getPlaylists(props.setName,props.setPhoto,props.setYears,props.setExplicit,props.setTopArtist,props.setTopAlbum)
   })},[])
 
     return (

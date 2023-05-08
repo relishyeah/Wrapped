@@ -1,7 +1,13 @@
 type album ={
   id:string;
   name:string;
+  photo:string;
 }
+type artist ={
+  name:string;
+  id:string;
+}
+
 type song ={
   id:string;
   artists:Array<string>;
@@ -13,6 +19,7 @@ type song ={
 type tracks={
   year:string;
   songs:Array<song>;
+  explicit:number;
 }
 
 type playlist={
@@ -83,6 +90,19 @@ export const getProfile = async():Promise<Array<string>>=> {
     return [data.id,data.display_name,data.images[0].url]
   }
 
+  export const getArtist = async(id:string):Promise<Array<string>>=> {
+    let accessToken = localStorage.getItem('access_token');
+    const response = await fetch('https://api.spotify.com/v1/artists/'+{id}, {
+      headers: {
+        Authorization: 'Bearer ' + accessToken
+      }
+    });
+  
+    const data = await response.json();
+    return [data.id,data.display_name,data.images[0].url]
+  }
+
+
 const playListCall = async (id:string,accessToken:string|null ):Promise<playlist[]> => {
   let i=0;
   let playlists:Array<playlist>=[]
@@ -109,7 +129,70 @@ const playListCall = async (id:string,accessToken:string|null ):Promise<playlist
     return playlists
  };
 
-  const getTracks = async(playlists:Array<playlist>,accessToken:string|null) =>{
+ const getExplicit = (tracks:any):Array<string|number> =>{
+  const trx = [];
+  let angry=0;
+  let year = '';
+  let t = 0;
+  for(t;t<tracks.length;t++){
+    if (tracks[t].explicit>= angry){
+      angry = tracks[t].explicit
+      year = tracks[t].year
+    }
+    trx.push([tracks[t].year,tracks[t].explicit])
+  }
+  return [year,angry]
+ }
+
+const getCounts = (years:any)=>{
+  let artistCounter:any = {}
+  // Name of Artist, Number of Unique SOngs, percent of repeats?
+  let topArist=['',0]
+  
+  let songCounter:any = {}
+  // Name of Song, Name of Artist(s),
+  let topSong =['',0]
+  
+  const uniqueSongs = new Set();
+
+  // Loop through all years
+  for (let i=0;i<years.length;i++){
+    let year = years[i].year
+    let cur =years[i].tracks
+    for (let j=0;j<cur.length;j++){
+      let item = cur[j]
+
+      if(songCounter[item.name] ===undefined){
+        songCounter[item.name] = 0
+      }
+      songCounter[item.name] += 1
+
+      item.artists.forEach((artist:any) =>{
+        if(artistCounter[artist.name] ===undefined){
+          artistCounter[artist.name] = 0
+        }
+       
+        if(!uniqueSongs.has(item.id)){
+          //Handle multi artist case
+          artistCounter[artist.name] += 1
+          if(artistCounter[artist.name]>topArist[1]){
+            topArist = [artist.name,artistCounter[artist.name]]
+          }
+        }
+      })
+      uniqueSongs.add(item.id)
+    }
+  }
+  let countCounts = new Array(years.length).fill(0);
+  for (const key in songCounter) {
+    countCounts[songCounter[key]] += 1
+}
+  console.log(countCounts[1]/years.length)
+  
+  return topArist
+}
+
+const getTracks = async(playlists:Array<playlist>,accessToken:string|null) =>{
     let i=0;
     let tracks = [];
     for(i;i< playlists.length;i++){
@@ -119,23 +202,27 @@ const playListCall = async (id:string,accessToken:string|null ):Promise<playlist
       }});
         const json = await response.json()
         let year:string = playlists[i].year;
+        let explicit:number=0;
         let songs:Array<song>=json.items.map((item:any) =>{
-          let artists:Array<string> = item.track.artists.map((artist:any) =>{
-            return artist.name;
+          let artists:Array<artist> = item.track.artists.map((artist:any) =>{
+            return {name:artist.name,id:artist.id};
+            
           });
-          let album:album = {name:item.track.album.name,id:item.track.album.id};
+          let album:album = {name:item.track.album.name,id:item.track.album.id, photo:item.track.album.images[1].url};
           let name:string = item.track.name;
           let id:string = item.track.id;
-          let explicit:boolean = item.track.explicit;
-          return {artists:artists,album:album,name:name,id:id,explicit:explicit}
+          if (item.track.explicit){
+            explicit++
+          };
+          return {artists:artists,album:album,name:name,id:id}
         })
-        tracks.push({year:year,tracks:songs})
+        tracks.push({year:year,tracks:songs,explicit:explicit})
   };
   return tracks
 }
 
 
-  export const getPlaylists = async(setName:(s:string)=>void,setPhoto:(s:string)=>void,setYears:(n:number)=>void)=> {
+  export const getPlaylists = async(setName:(s:string)=>void,setPhoto:(s:string)=>void,setYears:(n:number)=>void,setExplicit:(a:Array<string|number>)=>void,setTopArist:(a:Array<string|number>)=>void,setTopAlbum:(a:Array<string|number>)=>void)=> {
     const  [id,name,photo] = await getProfile()
     setName(name)
     setPhoto(photo)
@@ -146,6 +233,11 @@ const playListCall = async (id:string,accessToken:string|null ):Promise<playlist
 
     setYears(playlists.length)
     const tracks = await getTracks(playlists,accessToken)
+    const explicit = getExplicit(tracks)
+    const counts = getCounts(tracks)
+    console.log(counts)
+    setTopArist(counts)
+    setExplicit(explicit)
     let later = Date.now()
     console.log(later-now)
     return [name,photo,tracks]

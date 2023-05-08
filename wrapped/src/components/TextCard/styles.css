@@ -1,0 +1,21 @@
+.textContainer{
+    outline: 1px green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:12vh;
+}
+
+.largeText{
+    font-size: 5vh;
+    margin-left:5vw
+}
+
+.sideText{
+    font-size: 3vh
+}
+
+.leftSide{
+    margin-left: 2vh;
+}
+
