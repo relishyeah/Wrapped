@@ -130,18 +130,13 @@ const playListCall = async (id:string,accessToken:string|null ):Promise<playlist
  };
 
  const getExplicit = (tracks:any):Array<string|number> =>{
-  const trx = [];
   let angry=0;
-  let year = '';
   let t = 0;
   for(t;t<tracks.length;t++){
     if (tracks[t].explicit>= angry){
       angry = tracks[t].explicit
-      year = tracks[t].year
-    }
-    trx.push([tracks[t].year,tracks[t].explicit])
-  }
-  return [year,angry]
+    }  }
+  return [angry]
  }
 
 const getHighestN = (obj:any,n:number) =>{
@@ -150,7 +145,6 @@ const getHighestN = (obj:any,n:number) =>{
   Object.keys(obj).sort((a, b) => obj[b] - obj[a]).forEach((key, ind) =>
    {
       if(ind < n){
-        console.log(obj[key])
          ret[key] = obj[key]
       }
    });
@@ -184,10 +178,10 @@ const getCounts = (years:any)=>{
       }
       songCounter[item.id][0] += 1
 
-      if(albumCounter[item.album.name] ===undefined){
-        albumCounter[item.album.name] = 0
+      if(albumCounter[item.album.photo] ===undefined){
+        albumCounter[item.album.photo] = 0
       }
-      albumCounter[item.album.name] += 1
+      albumCounter[item.album.photo] += 1
 
       item.artists.forEach((artist:any) =>{
         if(artistCounter[artist.name] ===undefined){
@@ -205,12 +199,12 @@ const getCounts = (years:any)=>{
     }
   }
   topSong = songCounter[Object.keys(songCounter).reduce((a, b) => songCounter[a][0] > songCounter[b][0] ? a : b)]
- 
   topAlbums =getHighestN(albumCounter,4)
-  return [topSong,topAlbums,topArist]
+  return [topSong,topAlbums,topArist,Object.keys(songCounter).length]
 }
 
 const getTracks = async(playlists:Array<playlist>,accessToken:string|null) =>{
+    let explicit = 0;
     let i=0;
     let tracks = [];
     for(i;i< playlists.length;i++){
@@ -220,7 +214,6 @@ const getTracks = async(playlists:Array<playlist>,accessToken:string|null) =>{
       }});
         const json = await response.json()
         let year:string = playlists[i].year;
-        let explicit:number=0;
         let songs:Array<song>=json.items.map((item:any) =>{
           let artists:Array<artist> = item.track.artists.map((artist:any) =>{
             return {name:artist.name,id:artist.id};
@@ -234,13 +227,14 @@ const getTracks = async(playlists:Array<playlist>,accessToken:string|null) =>{
           };
           return {artists:artists,album:album,name:name,id:id}
         })
-        tracks.push({year:year,tracks:songs,explicit:explicit})
+        tracks.push({year:year,tracks:songs})
   };
-  return tracks
+  console.log(explicit)
+  return [tracks,explicit]
 }
 
 
-  export const getPlaylists = async(setName:(s:string)=>void,setPhoto:(s:string)=>void,setYears:(n:number)=>void,setExplicit:(a:Array<string|number>)=>void,setTopArist:(a:Array<string|number>)=>void,setTopAlbum:(a:Array<string|number>)=>void)=> {
+  export const getPlaylists = async(setName:(s:string)=>void,setPhoto:(s:string)=>void,setYears:(n:any)=>void,setTopSong:(a:Array<string|number>)=>void,setTopArist:(a:Array<string|number>)=>void,setTopAlbum:(a:Array<string|number>)=>void)=> {
     const  [id,name,photo] = await getProfile()
     setName(name)
     setPhoto(photo)
@@ -249,13 +243,15 @@ const getTracks = async(playlists:Array<playlist>,accessToken:string|null) =>{
     let now = Date.now()
     const playlists =  await playListCall(id,accessToken)
 
-    setYears(playlists.length)
-    const tracks = await getTracks(playlists,accessToken)
-    const explicit = getExplicit(tracks)
+    const temp:any =  await getTracks(playlists,accessToken)
+    const tracks = temp[0]
+    const explicit:number = temp[1] / (playlists.length)
     const counts = getCounts(tracks)
     console.log(counts)
+    setTopSong(counts[0])
+    setTopAlbum(counts[1])
     setTopArist(counts[2])
-    setExplicit(explicit)
+    setYears([playlists.length,counts[3],explicit])
     let later = Date.now()
     console.log(later-now)
     return [name,photo,tracks]

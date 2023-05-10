@@ -16,8 +16,8 @@ function App() {
   const [percent,setPercent] = useState(0);
   const [name,setName] = useState('')
   const [photo,setPhoto] = useState('')
-  const [years,setYears] = useState(0)
-  const [explicit,setExplicit] = useState(['',0])
+  const [years,setYears] = useState([0,0,0])
+  const [topSong,setTopSong] = useState(['',0])
   const [topArtist,setTopArtist] = useState(['',0])
   const [topAlbum,setTopAlbum] = useState(['',0])
 
@@ -39,7 +39,7 @@ function App() {
         setName={setName} 
         setPhoto={setPhoto} 
         setYears={setYears}
-        setExplicit={setExplicit}
+        setTopSong={setTopSong}
         setTopArtist={setTopArtist}
         setTopAlbum={setTopAlbum}
         />} />
@@ -51,7 +51,7 @@ function App() {
        name={name} 
        photo={photo} 
        years={years}
-       explicit={explicit}
+       topSong={topSong}
        topAlbum={topAlbum}
        topArtist={topArtist}
        />

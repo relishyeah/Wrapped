@@ -1,15 +1,15 @@
 import './styles.css'
 
 type yearsProps={
-  years:number;
+  years:any;
 }
 
-
+//years [# of years, unique songs %,  Explicit %]
 export const Years = (props:yearsProps) => {
   
   let calendars = [];
 
-   for (let i = 0; i < props.years; i++) {
+   for (let i = 0; i < props.years[0]; i++) {
        calendars.push(<svg key={i}width="4.5vh" height="4.5vh" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="2.5" y="7.3291" width="31" height="26.1707" rx="7.5" fill="#D9D9D9" stroke="black" strokeWidth="5"/>
         <rect x="4" y="7" width="28" height="7" fill="black"/>
@@ -22,10 +22,21 @@ export const Years = (props:yearsProps) => {
   
   return (
     <div className='yearsContainer'>
-    <div className="textContainer">
-      <div className='large'>{props.years}</div>
-      <div className="yearsText">{props.years <=1?'Year':'Years'} of Spotify Wrapped</div>
+      <div className="facts">
+      <div className="smallTextContainer">
+      <div className='large'>{props.years[0]}</div>
+      <div className="yearsText">{props.years[0] <=1?'year':'years'}, wrapped</div>
     </div>
+    <div className="smallTextContainer">
+      <div className='large'>{parseFloat(props.years[2]).toFixed(0)+'%'}</div>
+      <div className="yearsText"> explicit songs</div>
+    </div>
+    <div className="smallTextContainer">
+      <div className='large'>{props.years[1]}</div>
+      <div className="yearsText">unique songs</div>
+    </div>
+      </div>
+    
     <div className="calendars">
       {calendars }
     </div>

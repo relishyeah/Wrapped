@@ -30,6 +30,5 @@
 img{
     width:10vh;
     height:10vh;
-    clip-path: circle();
     object-fit: cover;
 }

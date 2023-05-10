@@ -22,7 +22,7 @@ export const Header = (props:any) => {
         </filter>
         </defs>
         </svg>
-        <img src={props.photo} />
+        <img style={{clipPath: 'circle()'}} src={props.photo} />
       </div>
       <div className="headerTitle">
         <h4>{props.name + "'s"}</h4>

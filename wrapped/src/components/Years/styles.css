@@ -1,14 +1,11 @@
-.textContainer{
-    outline: 1px green;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.smallTextContainer{
     height:12vh;
+
+    width: 33vw;
 }
 
 .large{
-    font-size: 12vh;
-    margin-left:5vw
+    font-size: 6vh;
 }
 
 .calendars{
@@ -16,11 +13,14 @@
     justify-content: space-evenly;
 }
 .yearsText{
-    font-size: 2.8vh
+    font-size: 2vh
 }
 
 .yearsContainer{
-    outline:1px red;
     width: 100%;
+}
+
+.facts{
+    display: flex;
 }
 

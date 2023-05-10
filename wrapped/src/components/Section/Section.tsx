@@ -18,6 +18,7 @@ export type SectionProps = {
     explicit?:Array<any>;
     topArtist?:Array<number|string>;
     topAlbum?:Array<number|string>;
+    topSong?:Array<number|string>;
 
 }
 
@@ -38,9 +39,11 @@ const Section = (props:SectionProps) =>{
 
             {props.years && <Years years={props.years}/>}
 
-            {props.explicit && <TextCard explicit={props.explicit} />}
+            {props.topSong && <TextCard topSong={props.topSong} />}
 
             {props.topArtist && <TextCard topArtist={props.topArtist} />}
+
+            {props.topAlbum && <TextCard topAlbum={props.topAlbum} />}
         </div>
 
         
