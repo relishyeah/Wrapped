@@ -100,6 +100,7 @@ export const getProfile = async():Promise<Array<string>>=> {
     });
   
     const data = await response.json();
+    console.log(data)
     return [data.images[1].url,data.name]
   }
 
@@ -144,9 +145,9 @@ const getHighestN = (obj:any,n:number) =>{
 
 
 const getCounts = (years:any)=>{
-  let artistCounter:any = {}
+  let artistCounter:any = {'':[0,0]}
   // Name of Artist, Number of Unique SOngs, percent of repeats?
-  let topArist=['',0]
+  let topArtist= ''
   
   let songCounter:any = {}
   // Name of Song, Name of Artist(s),
@@ -158,7 +159,6 @@ const getCounts = (years:any)=>{
 
   // Loop through all years
   for (let i=0;i<years.length;i++){
-    let year = years[i].year
     let cur =years[i].tracks
 
     // Loop through all tracks
@@ -166,9 +166,10 @@ const getCounts = (years:any)=>{
       let item = cur[j]
 
       if(songCounter[item.id] ===undefined){
-        songCounter[item.id] = [0,item.name,item.artists[0].id]
+        songCounter[item.id] = [0,item.name,item.artists[0].id,0]
       }
       songCounter[item.id][0] += 1
+      songCounter[item.id][3] += j
 
       if(albumCounter[item.album.photo] ===undefined){
         albumCounter[item.album.photo] = 0
@@ -176,14 +177,15 @@ const getCounts = (years:any)=>{
       albumCounter[item.album.photo] += 1
 
       item.artists.forEach((artist:any) =>{
-        if(artistCounter[artist.name] ===undefined){
-          artistCounter[artist.name] = 0
+        if(artistCounter[artist.id] ===undefined){
+          artistCounter[artist.id] = [0,0]
         }
-       
+ 
+        artistCounter[artist.id][1] += 1
         if(!uniqueSongs.has(item.id)){
-          artistCounter[artist.name] += 1
-          if(artistCounter[artist.name]>topArist[1]){
-            topArist = [artist.id,artistCounter[artist.name]]
+          artistCounter[artist.id][0] += 1
+          if(artistCounter[artist.id][0]>artistCounter[topArtist][0]){
+            topArtist = artist.id
           }
         }
       })
@@ -191,8 +193,10 @@ const getCounts = (years:any)=>{
     }
   }
   topSong = songCounter[Object.keys(songCounter).reduce((a, b) => songCounter[a][0] > songCounter[b][0] ? a : b)]
+  topSong[3] = (topSong[3] as number) / (topSong[0] as number)
+  console.log('ttt',topSong)
   topAlbums =getHighestN(albumCounter,4)
-  return [topSong,topAlbums,topArist,Object.keys(songCounter).length]
+  return [topSong,topAlbums,[topArtist,...artistCounter[topArtist]],Object.keys(songCounter).length]
 }
 
 const getTracks = async(playlists:Array<playlist>,accessToken:string|null) =>{
@@ -221,7 +225,6 @@ const getTracks = async(playlists:Array<playlist>,accessToken:string|null) =>{
         })
         tracks.push({year:year,tracks:songs})
   };
-  console.log(explicit)
   return [tracks,explicit]
 }
 
@@ -240,12 +243,13 @@ const getTracks = async(playlists:Array<playlist>,accessToken:string|null) =>{
     const explicit:number = temp[1] / (playlists.length)
     const counts = getCounts(tracks)
     console.log(counts)
+    console.log(counts[2][0])
     const topSong = await getArtist(counts[0][2]);
-    const topArtist =await getArtist(counts[2][0])
+    const topArtistReal =await getArtist(counts[2][0])
     setTopSong([...counts[0],...topSong])
     console.log([...counts[0],...topSong])
     setTopAlbum(counts[1])
-    setTopArist([...counts[2],...topArtist])
+    setTopArist([...counts[2],...topArtistReal])
     setYears([playlists.length,counts[3],explicit])
     let later = Date.now()
     console.log(later-now)

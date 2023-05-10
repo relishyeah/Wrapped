@@ -1,14 +1,13 @@
 .textContainer{
-    outline: 1px green;
     display: flex;
     align-items: center;
     justify-content: center;
-    height:12vh;
+    flex:1;
 }
 
 .largeText{
     font-size: 5vh;
-    margin-left:5vw
+    text-overflow: ellipsis;
 }
 
 .sideText{
@@ -16,6 +15,34 @@
 }
 
 .leftSide{
-    margin-left: 2vh;
+    position: relative;
+}
+
+.crown{
+    position: absolute;
+    z-index: 2;
+    top:-4vh;
+    left:-1.5vh;
+}
+
+.halo{
+    position: absolute;
+    left:-.75vh;
+    top:-.75vh;
+}
+
+.albums{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+.album{
+    position: relative;
+
+}
+.albumText{
+    font-size: 2.2vh;
 }
 

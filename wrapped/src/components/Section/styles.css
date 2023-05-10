@@ -1,13 +1,11 @@
 .section{
     color:#fff;
-    height: 20vh;
     width: 100%;
     position: absolute;
     display: flex;
     align-items: center;
     transition: all 2s;
     left:0;
-    padding-top:10px;
 }
 
 .spacer-top{
@@ -20,6 +18,15 @@
     position: absolute;
     top:0;
     z-index: 4;
+}
+
+.title{
+    flex:0;
+    position: relative;
+    margin-top:1vh;
+    left:2vw;
+    max-height: 20%;
+    max-width: 50%;
 }
 
 .layer0{

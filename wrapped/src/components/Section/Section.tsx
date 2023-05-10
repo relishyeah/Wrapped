@@ -15,10 +15,11 @@ export type SectionProps = {
     name?: string;
     photo?:string;
     years?:number;
-    explicit?:Array<any>;
+    title?:string;
     topArtist?:Array<number|string>;
     topAlbum?:Array<number|string>;
     topSong?:Array<number|string>;
+    loading:boolean;
 
 }
 
@@ -28,11 +29,15 @@ const Section = (props:SectionProps) =>{
         <>
         <div className= {"section "} 
             style ={{'backgroundColor': props.backgroundColor,
-          'justifyContent':props.justify,
-          'top':props.position}}
-          onClick={() => console.log(13)}>
+            'justifyContent':props.justify,
+            'top':props.position,
+            'height':props.name?'16vh':'21vh',
+            'alignItems':props.name?'end':'center'
+        }}>
             <div className={"spacer-top "+props.id}></div>
-
+            {props.title && 
+            <div className="title">{props.title}</div>
+            }
             {props.about && <a href='https://www.quinnrelyea.com'>quinnrelyea.com </a>}
             {props.name &&props.photo &&
             <Header name={props.name} photo={props.photo}/> }
