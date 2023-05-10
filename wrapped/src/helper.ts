@@ -91,15 +91,16 @@ export const getProfile = async():Promise<Array<string>>=> {
   }
 
   export const getArtist = async(id:string):Promise<Array<string>>=> {
+    console.log('https://api.spotify.com/v1/artists/'+id)
     let accessToken = localStorage.getItem('access_token');
-    const response = await fetch('https://api.spotify.com/v1/artists/'+{id}, {
+    const response = await fetch('https://api.spotify.com/v1/artists/'+id, {
       headers: {
         Authorization: 'Bearer ' + accessToken
       }
     });
   
     const data = await response.json();
-    return [data.id,data.display_name,data.images[0].url]
+    return [data.images[1].url,data.name]
   }
 
 
@@ -129,16 +130,6 @@ const playListCall = async (id:string,accessToken:string|null ):Promise<playlist
     return playlists
  };
 
- const getExplicit = (tracks:any):Array<string|number> =>{
-  let angry=0;
-  let t = 0;
-  for(t;t<tracks.length;t++){
-    if (tracks[t].explicit>= angry){
-      angry = tracks[t].explicit
-    }  }
-  return [angry]
- }
-
 const getHighestN = (obj:any,n:number) =>{
   let ret:any = {}
 
@@ -150,6 +141,7 @@ const getHighestN = (obj:any,n:number) =>{
    });
    return ret;
 }
+
 
 const getCounts = (years:any)=>{
   let artistCounter:any = {}
@@ -248,9 +240,12 @@ const getTracks = async(playlists:Array<playlist>,accessToken:string|null) =>{
     const explicit:number = temp[1] / (playlists.length)
     const counts = getCounts(tracks)
     console.log(counts)
-    setTopSong(counts[0])
+    const topSong = await getArtist(counts[0][2]);
+    const topArtist =await getArtist(counts[2][0])
+    setTopSong([...counts[0],...topSong])
+    console.log([...counts[0],...topSong])
     setTopAlbum(counts[1])
-    setTopArist(counts[2])
+    setTopArist([...counts[2],...topArtist])
     setYears([playlists.length,counts[3],explicit])
     let later = Date.now()
     console.log(later-now)

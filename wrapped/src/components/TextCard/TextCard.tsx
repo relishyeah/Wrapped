@@ -18,10 +18,13 @@ export const TextCard = (props:textCardProps) => {
           {type==='topSong' && props[0]} 
           {type==='topArtist' && props[1]} 
         </div>
+        {type=='topSong' && <img style={{clipPath: 'circle()'}} src={props[3] as string} />}
+        {type=='topArtist' && <img style={{clipPath: 'circle()'}} src={props[2] as string} />}
+
       </div>
       <div className="sideText">
-        {type==='topSong' && 'different years '+ props[1] + ' by ' + props[2] +' was in your top songs'}
-        {type==='topArtist' && 'unique songs by '+ props[0] + ", ain't that sweet"}
+        {type==='topSong' && 'different years '+ props[1] + ' by ' + props[4] +' was in your top songs'}
+        {type==='topArtist' && 'unique songs by '+ props[3] + ", ain't that sweet"}
       </div>
 
       {type==='topAlbums' && props.map((item,idx) =>{
