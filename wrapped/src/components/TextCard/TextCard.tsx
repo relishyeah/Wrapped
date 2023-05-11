@@ -42,10 +42,28 @@ export const TextCard = (props:textCardProps) => {
             {type==='topArtist' && props[4]} 
         </div>
         {type==='topSong' &&   <div>{props[5]} </div>}
-        {type==='topSong' &&   props[0]}
-        {type==='topSong' &&   props[3]}
-        {type==='topArtist' &&  props[1] }
-        {type==='topArtist' &&  props[2] }
+        <div className="factHolder">
+          <div className="fact">
+            <div className="large">
+              {type==='topSong' &&   props[0]}
+              {type==='topArtist' &&  props[1]}
+            </div>
+            <div className="yearsText">
+              {type==='topSong' &&   'years in wrapped'}
+              {type==='topArtist' &&  'unique songs'}
+            </div>
+          </div>
+          <div className="fact">
+            <div className="large">
+            {type==='topSong' &&   props[3]}
+            {type==='topArtist' &&  props[2] }
+            </div>
+            <div className="yearsText">
+              {type==='topSong' &&   'average rank'}
+              {type==='topArtist' &&  'total songs'}
+            </div>
+          </div>
+        </div>
       </div>
      
 
@@ -63,8 +81,9 @@ export const TextCard = (props:textCardProps) => {
         {props.topAlbum && 
         Object.keys(props.topAlbum).map((item,idx) =>{
           return <div className='album' key={idx}>
-          <div  className='albumText'>{props.topAlbum && Object.values(props.topAlbum)[idx]} songs </div>
           <img  src={item as string}/>
+          <div  className='yearsText'>{props.topAlbum && Object.values(props.topAlbum)[idx]} songs </div>
+          
           </div>
         })}
       </div>

@@ -7,7 +7,6 @@
 
 .bow{
     position: absolute;
-    z-index: 301;
     top:-3vh;
     margin:auto;
     max-width: 10vh;
@@ -18,7 +17,6 @@
     top:0;
     bottom:0;
     left:1vh;
-    z-index: 200;
     margin: auto 5vw auto 3vw;
 }
 .headerTitle{

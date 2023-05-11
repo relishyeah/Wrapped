@@ -1,8 +1,9 @@
 .textContainer{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     flex:1;
+    padding-left: 3vw;
 }
 
 .largeText{
@@ -11,16 +12,17 @@
 }
 
 .sideText{
-    font-size: 3vh
+    font-size: 3vh;
+    width:100%
 }
 
 .leftSide{
     position: relative;
+    margin-top: 5vh;
 }
 
 .crown{
     position: absolute;
-    z-index: 2;
     top:-4vh;
     left:-1.5vh;
 }
@@ -40,9 +42,14 @@
 }
 .album{
     position: relative;
+    margin-top: 1.5vh;
 
 }
-.albumText{
-    font-size: 2.2vh;
-}
 
+.factHolder{
+    display: flex;
+    align-items: center;
+}  
+.fact{
+    width:50%;
+}

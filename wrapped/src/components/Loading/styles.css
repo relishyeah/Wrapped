@@ -53,6 +53,11 @@
     opacity:0;
 }
 
+.normal{
+    opacity:1;
+    transition-duration: 1s;
+    width: 100%;
+}
 
 
 @keyframes spin{

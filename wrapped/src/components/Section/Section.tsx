@@ -20,14 +20,14 @@ export type SectionProps = {
     topAlbum?:Array<number|string>;
     topSong?:Array<number|string>;
     loading:boolean;
-
+    className?:string;
 }
 
 const Section = (props:SectionProps) =>{
 
     return(
         <>
-        <div className= {"section "} 
+        <div className= 'section' 
             style ={{'backgroundColor': props.backgroundColor,
             'justifyContent':props.justify,
             'top':props.position,
@@ -35,20 +35,24 @@ const Section = (props:SectionProps) =>{
             'alignItems':props.name?'end':'center'
         }}>
             <div className={"spacer-top "+props.id}></div>
-            {props.title && 
-            <div className="title">{props.title}</div>
-            }
-            {props.about && <a href='https://www.quinnrelyea.com'>quinnrelyea.com </a>}
-            {props.name &&props.photo &&
-            <Header name={props.name} photo={props.photo}/> }
+            
+            <div className={props.className}>
+                {props.title && 
+                <div className="title ">{props.title}</div>
+                }
+                {props.about && <a href='https://www.quinnrelyea.com'>quinnrelyea.com </a>}
+                {props.name &&props.photo &&
+                <Header className='noShow' name={props.name} photo={props.photo}/> }
 
-            {props.years && <Years years={props.years}/>}
+                {props.years && <Years years={props.years}/>}
 
-            {props.topSong && <TextCard topSong={props.topSong} />}
+                {props.topSong && <TextCard topSong={props.topSong} />}
 
-            {props.topArtist && <TextCard topArtist={props.topArtist} />}
+                {props.topArtist && <TextCard topArtist={props.topArtist} />}
 
-            {props.topAlbum && <TextCard topAlbum={props.topAlbum} />}
+                {props.topAlbum && <TextCard topAlbum={props.topAlbum} />}
+            </div>
+            
         </div>
 
         

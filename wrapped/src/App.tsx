@@ -54,6 +54,7 @@ function App() {
        topSong={topSong}
        topAlbum={topAlbum}
        topArtist={topArtist}
+       className={(loading) ? 'hidden' : 'normal'}
        />
         
       </div>
