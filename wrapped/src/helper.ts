@@ -49,7 +49,8 @@ function generateRandomString(length:number):string {
   }
  
 const clientId: string = '82c274ec26b84f0393a09e74f288e3cc';
-const redirectUri:string = 'https://relishyeah.github.io/Wrapped/callback';
+const redirectUri:string = 'https://relishyeah.github.io/Wrapped/';
+//const redirectUri:string= 'http://localhost:3000/'
 
 let codeVerifier:string = generateRandomString(128);
 
