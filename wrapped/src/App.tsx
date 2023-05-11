@@ -1,13 +1,10 @@
-import React, {useState} from 'react';
-import {HashRouter, Routes, Route} from 'react-router-dom'
+import React, {useState, useEffect} from 'react';
+import { Routes, Route} from 'react-router-dom'
 import Home from './pages/Home/Home'
 import Welcome from './pages/Welcome/Welcome';
 import Callback from './pages/Callback'
 import './App.css';
 
-export type TextCardProps= {
-
-}
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -21,9 +18,15 @@ function App() {
   const [topArtist,setTopArtist] = useState(['',0])
   const [topAlbum,setTopAlbum] = useState(['',0])
 
+  useEffect(() =>{
+    const re = /http:\/\/localhost:3000\/callback\?code=(.*)&state=(.*)/gm
+    const test =re.exec(window.location.href)
+    if(test !== null){
+      window.location.href='http://localhost:3000/#/callback?code='+test[1]+'&state=' + test[2]
+    }
+  }, [])
 
   return (
-    <HashRouter>
       <div className="App">
          <div className="container">
              <div className={(loggedIn && !loading) ?"title moveMe" : "title"}>
@@ -60,8 +63,6 @@ function App() {
       </div>
   
        </div>
-      
-    </HashRouter>
      
   );
 }

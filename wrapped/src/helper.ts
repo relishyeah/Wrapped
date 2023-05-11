@@ -49,7 +49,7 @@ function generateRandomString(length:number):string {
   }
  
 const clientId: string = '82c274ec26b84f0393a09e74f288e3cc';
-const redirectUri:string = 'https://relishyeah.github.io/Wrapped/callback';
+const redirectUri:string = 'http://localhost:3000/callback';
 
 let codeVerifier:string = generateRandomString(128);
 
@@ -78,9 +78,10 @@ const nullToEmpty = (str:string|null):string =>{
     return str === null ? '' : str;
 }
 
-export const getProfile = async():Promise<Array<string>>=> {
+export const getProfile = async()=> {
     let accessToken = localStorage.getItem('access_token');
-    const response = await fetch('https://api.spotify.com/v1/me', {
+    try
+      {const response = await fetch('https://api.spotify.com/v1/me', {
       headers: {
         Authorization: 'Bearer ' + accessToken
       }
@@ -88,6 +89,10 @@ export const getProfile = async():Promise<Array<string>>=> {
   
     const data = await response.json();
     return [data.id,data.display_name,data.images[0].url]
+  } catch{
+    console.log('fuck')
+    return ['1','2','3']
+  }
   }
 
   export const getArtist = async(id:string):Promise<Array<string>>=> {
@@ -258,10 +263,13 @@ const getTracks = async(playlists:Array<playlist>,accessToken:string|null) =>{
 
 
 export const callback = async () =>{
-    const urlParams:URLSearchParams = new URLSearchParams(window.location.search);
+    const re = /http:\/\/localhost:3000\/#\/callback\?code=(.*)&state=(.*)/gm
+    const test =re.exec(window.location.href)
 
-    let code:string = nullToEmpty(urlParams.get('code')) 
-        
+    console.log(test)
+    let code:string = nullToEmpty(test && test[1])
+    console.log(code)
+    console.log('code')
 
     let codeVerifier2:string|undefined = nullToEmpty(localStorage.getItem('code_verifier'));
 
@@ -282,8 +290,10 @@ export const callback = async () =>{
     })
     .then(response => {
         if (!response.ok) {
+          console.log('great failure')
         throw new Error('HTTP status ' + response.status);
         }
+        console.log('great success')
         return response.json();
     })
     .then(data => {
