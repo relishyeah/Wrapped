@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import {HashRouter, Routes, Route} from 'react-router-dom'
 import Home from './pages/Home/Home'
 import Welcome from './pages/Welcome/Welcome';
 import Callback from './pages/Callback'
@@ -23,7 +23,7 @@ function App() {
 
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className="App">
          <div className="container">
              <div className={(loggedIn && !loading) ?"title moveMe" : "title"}>
@@ -61,7 +61,7 @@ function App() {
   
        </div>
       
-    </BrowserRouter>
+    </HashRouter>
      
   );
 }
