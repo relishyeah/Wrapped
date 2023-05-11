@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/wrapped/static/css/main.0cb8cae7.css",
+    "main.js": "/wrapped/static/js/main.c6a82d63.js",
+    "static/js/787.2b0d0349.chunk.js": "/wrapped/static/js/787.2b0d0349.chunk.js",
+    "static/media/wave2.svg": "/wrapped/static/media/wave2.3b3e70037a6cd4bdfca6.svg",
+    "static/media/wave0.svg": "/wrapped/static/media/wave0.1d618bc2ac2ab0ac8d77.svg",
+    "static/media/wave4.svg": "/wrapped/static/media/wave4.11581d954d9e89532c54.svg",
+    "static/media/wave1.svg": "/wrapped/static/media/wave1.2baaaffd5f4410796494.svg",
+    "static/media/wave3.svg": "/wrapped/static/media/wave3.f04b4fd7811d5bbf9559.svg",
+    "index.html": "/wrapped/index.html",
+    "main.0cb8cae7.css.map": "/wrapped/static/css/main.0cb8cae7.css.map",
+    "main.c6a82d63.js.map": "/wrapped/static/js/main.c6a82d63.js.map",
+    "787.2b0d0349.chunk.js.map": "/wrapped/static/js/787.2b0d0349.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0cb8cae7.css",
+    "static/js/main.c6a82d63.js"
+  ]
+}
