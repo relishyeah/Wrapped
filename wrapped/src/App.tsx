@@ -23,7 +23,7 @@ function App() {
     const test =re.exec(window.location.href)
     if(test !== null){
       //window.location.href='https://relishyeah.github.io/Wrapped/#/?code='+test[1]+'&state=' + test[2]
-      window.location.href='https://relishyeah.github.io/callback?code='+test[1]+'&state=' + test[2]
+      window.location.href='https://relishyeah.github.io/#/callback?code='+test[1]+'&state=' + test[2]
     }
   }, [])
 
