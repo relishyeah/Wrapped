@@ -49,7 +49,7 @@ function generateRandomString(length:number):string {
   }
  
 const clientId: string = '82c274ec26b84f0393a09e74f288e3cc';
-const redirectUri:string = 'http://localhost:3000/callback';
+const redirectUri:string = 'https://relishyeah.github.io/Wrapped/callback';
 
 let codeVerifier:string = generateRandomString(128);
 
@@ -90,7 +90,7 @@ export const getProfile = async()=> {
     const data = await response.json();
     return [data.id,data.display_name,data.images[0].url]
   } catch{
-    console.log('fuck')
+    console.log('oops')
     return ['1','2','3']
   }
   }
@@ -263,7 +263,7 @@ const getTracks = async(playlists:Array<playlist>,accessToken:string|null) =>{
 
 
 export const callback = async () =>{
-    const re = /http:\/\/localhost:3000\/#\/callback\?code=(.*)&state=(.*)/gm
+    const re = /\/#\/callback\?code=(.*)&state=(.*)/gm
     const test =re.exec(window.location.href)
 
     console.log(test)

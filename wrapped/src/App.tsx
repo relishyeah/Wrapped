@@ -19,10 +19,10 @@ function App() {
   const [topAlbum,setTopAlbum] = useState(['',0])
 
   useEffect(() =>{
-    const re = /http:\/\/localhost:3000\/callback\?code=(.*)&state=(.*)/gm
+    const re = /callback\?code=(.*)&state=(.*)/gm
     const test =re.exec(window.location.href)
     if(test !== null){
-      window.location.href='http://localhost:3000/#/callback?code='+test[1]+'&state=' + test[2]
+      window.location.href='https://relishyeah.github.io/Wrapped/#/callback?code='+test[1]+'&state=' + test[2]
     }
   }, [])
 
