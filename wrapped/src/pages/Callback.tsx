@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { callback,getPlaylists } from '../helper';
+import { getPlaylists } from '../helper';
 
 
 export type callbackProps ={
@@ -17,9 +17,12 @@ const Callback = (props:callbackProps) => {
   useEffect(() =>{
     props.setLoading(true)
     props.setLoggedIn(true)
-    callback().then(()=>{
-      let playlists = getPlaylists(props.setName,props.setPhoto,props.setYears,props.setTopSong,props.setTopArtist,props.setTopAlbum)
-  })},[])
+    const fetchData = async () =>{
+      await getPlaylists(props.setName,props.setPhoto,props.setYears,props.setTopSong,props.setTopArtist,props.setTopAlbum)
+    }
+    fetchData().catch(console.error);
+    
+  },[])
 
     return (
     <></>

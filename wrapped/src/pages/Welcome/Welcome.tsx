@@ -85,9 +85,9 @@ const Welcome = (props:WelcomeProps) => {
             </div>
             
 
-            <div onClick={() => openPresent() } className='logIn'>
+            <a href={authorize()} className='logIn'>
                     See yours
-            </div>  
+            </a>  
             
         </div> );
 }

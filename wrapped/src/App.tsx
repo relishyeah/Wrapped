@@ -7,6 +7,7 @@ import './App.css';
 
 
 function App() {
+  const [token, setToken] = useState<string|null>('');
   const [loggedIn, setLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true)
   const [animate,setAnimate] = useState(false)
@@ -18,14 +19,20 @@ function App() {
   const [topArtist,setTopArtist] = useState(['',0])
   const [topAlbum,setTopAlbum] = useState(['',0])
 
-  useEffect(() =>{
-    const re = /\?code=(.*)&state=(.*)/gm
-    const test =re.exec(window.location.href)
-    if(test !== null){
-      //window.location.href='https://relishyeah.github.io/Wrapped/#/?code='+test[1]+'&state=' + test[2]
-      window.location.href='https://relishyeah.github.io/Wrapped/#/callback?code='+test[1]+'&state=' + test[2]
+  useEffect(() => {
+    const hash = window.location.hash
+    let token = window.localStorage.getItem("token")
+
+    if (!token && hash) {
+      //@ts-ignore
+        token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1]
+        window.location.hash = ""
+        window.localStorage.setItem("access_token", token)
     }
-  }, [])
+
+    setToken(token)
+
+}, [])
 
   return (
       <div className="App">
@@ -33,11 +40,9 @@ function App() {
              <div className={(loggedIn && !loading) ?"title moveMe" : "title"}>
       Wrapped,<br/>Wrapped
       </div> 
-      <Routes>
-        <Route path='/' element={<Welcome setAnimate={setAnimate} setLoading={setLoading} setLoggedIn={setLoggedIn} animate={animate} setPercent={setPercent}  />}/>
+      {!token && <Welcome setAnimate={setAnimate} setLoading={setLoading} setLoggedIn={setLoggedIn} animate={animate} setPercent={setPercent}  />}
 
-        <Route path='/callback' 
-        element={<Callback 
+      {token &&<Callback 
         setLoading = {setLoading} 
         setLoggedIn={setLoggedIn} 
         setName={setName} 
@@ -46,8 +51,7 @@ function App() {
         setTopSong={setTopSong}
         setTopArtist={setTopArtist}
         setTopAlbum={setTopAlbum}
-        />} />
-      </Routes>
+        />}
       <Home loggedIn ={loggedIn}
        loading={loading} 
        setLoading={setLoading} 
