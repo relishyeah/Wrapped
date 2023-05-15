@@ -45,16 +45,14 @@ const nullToEmpty = (str:string|null):string =>{
 
 export const getProfile = async()=> {
     let accessToken = localStorage.getItem('access_token');
-    console.log(accessToken)
     try
       {const response = await fetch('https://api.spotify.com/v1/me', {
       headers: {
         Authorization: 'Bearer ' + accessToken
-      }
+      } 
     });
   
     const data = await response.json();
-    console.log(data)
     return [data.id,data.display_name,data.images[0].url]
   } catch (error) {
     console.error(error);
@@ -76,32 +74,26 @@ export const getProfile = async()=> {
     return [data.images[1].url,data.name]
   }
 
-
-const playListCall = async (id:string,accessToken:string|null ):Promise<playlist[]> => {
-  let i=0;
-  let playlists:Array<playlist>=[]
-  for(i;i< 5;i++){
-    const response = await fetch('https://api.spotify.com/v1/users/'+id+'/playlists?limit=50&offset='+(i*50), {
+  const playlistCall = async(accessToken:string|null):Promise<playlist[]> =>{
+    let playlists:Array<playlist>=[];
+    const response = await fetch('https://api.spotify.com/v1/search?q=Your+Top+Songs&type=playlist&offset=0', {
       headers: {
         Authorization: 'Bearer ' + accessToken
     }});
-      const json = await response.json()
-      const songRegex =/Your Top Songs/igm
-      const yearRegex = /\d{4}/gm
-      json.items.forEach((obj:any) => {
-        if (obj.name.match(songRegex) && obj.owner.id === 'spotify'){
-          const id:string = obj.id
-          const year:string = obj.name.match(yearRegex)[0]
-          playlists.push(
-            {id:id,year:year} 
-          );
-        }
-      })
-      if(json.items.length < 50){break;}
-    }
+    const json = await response.json()
+    console.log(json)
+    const songRegex =/Your Top Songs/igm
+    const yearRegex = /\d{4}/gm
+    json.playlists.items.forEach((obj:any) => {
+      if (obj.name.match(songRegex) && obj.owner.id === 'spotify'){
+        const id:string = obj.id
+        const year:string = obj.name.match(yearRegex)[0]
+        playlists.push({id:id,year:year} );
+      }
+    })
     console.log(playlists)
     return playlists
- };
+  }
 
 const getHighestN = (obj:any,n:number) =>{
   let ret:any = {}
@@ -212,7 +204,7 @@ const getTracks = async(playlists:Array<playlist>,accessToken:string|null) =>{
     console.log(id,name,photo)
     let accessToken = localStorage.getItem('access_token');
     let now = Date.now()
-    const playlists =  await playListCall(id,accessToken)
+    const playlists =  await playlistCall(accessToken)
 
     const temp:any =  await getTracks(playlists,accessToken)
     const tracks = temp[0]
