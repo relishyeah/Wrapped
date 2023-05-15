@@ -2,21 +2,24 @@
     width:100%;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    max-width: 100dvh;
+    margin: auto;
 }
-
+ 
 .bow{
     position: absolute;
-    top:-3vh;
+    top:-3dvh;
     margin:auto;
-    max-width: 10vh;
+    max-width: 10dvh;
+    z-index: 10;
 }
 
 .photo{
     position: relative;
     top:0;
     bottom:0;
-    left:1vh;
+    left:1dvh;
     margin: auto 5vw auto 3vw;
 }
 .headerTitle{
@@ -26,7 +29,7 @@
 }
 
 img{
-    width:10vh;
-    height:10vh;
+    width:10dvh;
+    height:10dvh;
     object-fit: cover;
 }

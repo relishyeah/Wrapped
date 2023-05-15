@@ -4,8 +4,8 @@ import Section from '../../components/Section/Section';
 
 const Home = (props:any) => {
 
-  const start = ['70vh','73vh','78vh','84vh', '89vh']
-  const finish = ['0vh','16vh','37vh','58vh', '79vh']
+  const start = ['78vh','82vh','86vh','90vh', '94vh','96vh']
+  const finish = ['0vh','16vh','37vh','58vh', '79vh','100vh']
 
 
   return (
@@ -60,6 +60,15 @@ const Home = (props:any) => {
       topAlbum={props.topAlbum} 
       loading={props.loading} 
       title='Top Albums'/>
+
+    <Section 
+    backgroundColor='#6b6bfe'
+      position={props.loading?start[5]:finish[5]} 
+      id='layer5'
+      loading={props.loading}
+      about
+      justify='center'
+    />
 
     </div>
     

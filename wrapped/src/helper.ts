@@ -28,8 +28,8 @@ type playlist={
 }
  
 const clientId: string = '82c274ec26b84f0393a09e74f288e3cc';
-const redirectUri:string = 'https://relishyeah.github.io/Wrapped/';
-//const redirectUri:string= 'http://localhost:3000/'
+//const redirectUri:string = 'https://relishyeah.github.io/Wrapped/';
+const redirectUri:string= 'http://localhost:3000/'
 
 
 export const  authorize = ():string => {
@@ -141,7 +141,7 @@ const getCounts = (years:any)=>{
         songCounter[item.id] = [0,item.name,item.artists[0].id,0]
       }
       songCounter[item.id][0] += 1
-      songCounter[item.id][3] += j
+      songCounter[item.id][3] += j+1
 
       if(albumCounter[item.album.photo] ===undefined){
         albumCounter[item.album.photo] = 0
@@ -167,7 +167,7 @@ const getCounts = (years:any)=>{
   console.log(songCounter)
   if (Object.keys(songCounter).length !== 0){
     topSong = songCounter[Object.keys(songCounter).reduce((a, b) => songCounter[a][0] > songCounter[b][0] ? a : b)]
-  topSong[3] = (topSong[3] as number) / (topSong[0] as number)
+  topSong[3] = Math.floor((topSong[3] as number) / (topSong[0] as number))
   }
   
   console.log('ttt',topSong)

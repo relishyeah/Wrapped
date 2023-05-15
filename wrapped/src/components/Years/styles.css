@@ -1,10 +1,10 @@
 .smallTextContainer{
-    height:12vh;
+    height:12dvh;
     width: 33vw;
 }
 
 .large{
-    font-size: 6vh;
+    font-size: 6dvh;
 }
 
 .calendars{
@@ -17,6 +17,10 @@
 
 .yearsContainer{
     width: 100%;
+    position: relative;
+    max-width: 100dvh;
+    height: 15dvh;
+    margin: auto;
 }
 
 .facts{

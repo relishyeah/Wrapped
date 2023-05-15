@@ -10,7 +10,7 @@ export type SectionProps = {
     about?:boolean;
     share?:boolean;
     position: string;
-    id: 'layer0'|'layer1' | 'layer2' | 'layer3' | 'layer4'
+    id: 'layer0'|'layer1' | 'layer2' | 'layer3' | 'layer4' | 'layer5'
     child?: React.FC;
     name?: string;
     photo?:string;
@@ -22,6 +22,7 @@ export type SectionProps = {
     loading:boolean;
     className?:string;
 }
+
 
 const Section = (props:SectionProps) =>{
 
@@ -37,20 +38,17 @@ const Section = (props:SectionProps) =>{
             <div className={"spacer-top "+props.id}></div>
             
             <div className={props.className}>
-                {props.title && 
-                <div className="title ">{props.title}</div>
-                }
-                {props.about && <a href='https://www.quinnrelyea.com'>quinnrelyea.com </a>}
+                {props.about && <><a className='abt' href='https://www.quinnrelyea.com'>quinnrelyea.com </a></> }
                 {props.name &&props.photo &&
                 <Header className='noShow' name={props.name} photo={props.photo}/> }
 
                 {props.years && <Years years={props.years}/>}
 
-                {props.topSong && <TextCard topSong={props.topSong} />}
+                {props.topSong && <TextCard topSong={props.topSong} title={props.title} />}
 
-                {props.topArtist && <TextCard topArtist={props.topArtist} />}
+                {props.topArtist && <TextCard topArtist={props.topArtist} title={props.title} />}
 
-                {props.topAlbum && <TextCard topAlbum={props.topAlbum} />}
+                {props.topAlbum && <TextCard topAlbum={props.topAlbum} title={props.title} />}
             </div>
             
         </div>

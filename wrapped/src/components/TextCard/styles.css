@@ -1,48 +1,51 @@
 .textContainer{
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     flex:1;
     padding-left: 3vw;
+    max-width: 100dvh;
+    margin: auto;
 }
 
 .largeText{
-    font-size: 5vh;
+    font-size: 5dvh;
     text-overflow: ellipsis;
 }
 
 .sideText{
-    font-size: 3vh;
-    width:100%
+    font-size: 2dvh;
+    width: 60vh;
+}
+
+.artistName{
+    margin-top:-.5vh ;
+    margin-bottom: -1.5vh;
 }
 
 .leftSide{
     position: relative;
-    margin-top: 5vh;
-}
-
-.crown{
-    position: absolute;
-    top:-4vh;
-    left:-1.5vh;
 }
 
 .halo{
     position: absolute;
-    left:-.75vh;
-    top:-.75vh;
+    left:-.75dvh;
+    top:-.75dvh;
 }
 
 .albums{
     width: 100%;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-
+    max-width: 100vh;
+    margin: auto;
 }
 .album{
     position: relative;
-    margin-top: 1.5vh;
+    margin-top: 1.5dvh;
 
 }
 
@@ -52,4 +55,12 @@
 }  
 .fact{
     width:50%;
+}
+
+.sectionTitle{
+    margin: auto;
+    position: relative;
+    max-width: 100vh;
+    text-align: left;
+    padding-left: 5vw;
 }

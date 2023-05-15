@@ -9,7 +9,7 @@
 .container{
   background-color: #177156;
   width: 100%;
-  height: 100vh;
+  height: 100dvh;
   padding: 2vh 2vw;
   display: grid;
   background-color:#224b2b;
@@ -17,7 +17,6 @@
   background-position: center;
   background-size: cover;
 }
-
     
 .content{
   width: 100%;
@@ -25,7 +24,6 @@
 }
 
 svg{
-  height: auto;
   max-width: 250px;
   left:0;
   right:0;
@@ -33,9 +31,11 @@ svg{
 
 .box-top {  
   position: relative;
-  margin-top: 17vh;
+  margin-top: 17dvh;
   z-index: 10;
   margin-bottom: 0;
+  width:50dvh;
+  height: auto;
   transition:all .5s ease-in-out;
 }
 
@@ -44,16 +44,16 @@ svg{
 }
 
 .open {  
-  margin-top: 0vh;
-  margin-bottom: 17vh;
+  margin-top: 0dvh;
+  margin-bottom: 17dvh;
   transition:all .5s ease-in-out;
   z-index: 3;
 }
 
 .spotify{
   position: absolute;
-  top: 30vh;
-  width:40vw;
+  top: 28dvh;
+  width:30dvh;
   max-width: 175px;
   height: auto;
   margin:auto;
@@ -61,15 +61,16 @@ svg{
 }
 
 .move{
-  top:17.5vh;
+  top:17.5dvh;
   left:0;
   transition: all .6s ease-in-out;
 }
 
 .present{
   position: relative;
-  margin-top:-.6vh;
+  margin-top:-2dvh;
   width:auto;
+  overflow: hidden;
 }
 
 .box-bottom{
@@ -78,8 +79,9 @@ svg{
   margin: auto;
   max-width: 250px;
   position: relative;
-  margin-top: 0;
   transition: all .5s ease-in-out;
+  width:50dvh;
+  height: auto;
 }
 
 .logIn{
@@ -95,6 +97,7 @@ svg{
   user-select: none;
   transition: all .25s ease-in-out;
   z-index: 100;
+  text-decoration: none;
 }
 
 .logIn:hover{
