@@ -5,23 +5,23 @@
     justify-content: space-evenly;
     flex:1;
     padding-left: 3vw;
-    max-width: 100dvh;
+    max-width: 100svh;
     margin: auto;
 }
 
 .largeText{
-    font-size: 5dvh;
+    font-size: 5svh;
     text-overflow: ellipsis;
 }
 
 .sideText{
-    font-size: 2dvh;
-    width: 60vh;
+    font-size: 2svh;
+    width: 60svh;
 }
 
 .artistName{
-    margin-top:-.5vh ;
-    margin-bottom: -1.5vh;
+    margin-top:-.5svh ;
+    margin-bottom: -1.5svh;
 }
 
 .leftSide{
@@ -30,8 +30,8 @@
 
 .halo{
     position: absolute;
-    left:-.75dvh;
-    top:-.75dvh;
+    left:-.75svh;
+    top:-.75svh;
 }
 
 .albums{
@@ -45,7 +45,7 @@
 }
 .album{
     position: relative;
-    margin-top: 1.5dvh;
+    margin-top: 1.5svh;
 
 }
 

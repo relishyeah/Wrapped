@@ -48,7 +48,7 @@
 
 h1{
     position: relative;
-    padding: 2vh 4vw 2vh 4vw;
+    padding: 2svh 4vw 2svh 4vw;
     z-index: 12;
     opacity: 0;
 }
@@ -61,7 +61,7 @@ select{
 .abt{
     text-decoration: none;
     color:#333;
-    font-size: 2.2dvh;
+    font-size: 2.2svh;
     font-weight: bold;
 }
 
@@ -76,7 +76,7 @@ select{
     cursor: pointer;
     user-select: none;
     transition: all .25s ease-in-out;
-    height: 6dvh;
+    height: 6svh;
   }
   
   .button:hover{

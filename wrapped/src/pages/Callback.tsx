@@ -15,8 +15,6 @@ export type callbackProps ={
 
 const Callback = (props:callbackProps) => {
   useEffect(() =>{
-    props.setLoading(true)
-    props.setLoggedIn(true)
     const fetchData = async () =>{
       await getPlaylists(props.setName,props.setPhoto,props.setYears,props.setTopSong,props.setTopArtist,props.setTopAlbum)
     }

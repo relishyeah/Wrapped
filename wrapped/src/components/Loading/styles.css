@@ -1,10 +1,10 @@
 .loadingContainer{
     position: absolute;
-    height:45dvh;
+    height:45svh;
     width: 100%;
     left: 0;
     right: 0;
-    top:17.5dvh;
+    top:17.5svh;
     margin: auto;
     transition: top 1s ease-in-out;
 }
@@ -12,7 +12,7 @@
 
 .loadingIcon{
     position: absolute;
-    width:40vw;
+    width:30svh;
     max-width: 175px;
     height: auto;
     left:0;
@@ -29,18 +29,18 @@
 
 .progressContainer{
     position: relative;
-    height:5dvh;
+    height:5svh;
     width:298px;
     border-radius:2.5em;
     background-color: #0a22ba;
     left:0;
     right:0;
-    margin: calc(175px + 5vh) auto auto auto;
+    margin: calc(175px + 5svh) auto auto auto;
     
 }
 .progressBar{
     position: absolute;
-    height:5dvh;
+    height:5svh;
     max-width: 302px;
     background-color: #177156;
     left:-2px;
@@ -65,7 +65,7 @@
     transform:rotate(0deg);
     opacity:1;
     }
-    99%{
+    95%{
     opacity:1;
     transform:rotate(720deg);
     }

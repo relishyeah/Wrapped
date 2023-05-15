@@ -4,8 +4,8 @@ import Section from '../../components/Section/Section';
 
 const Home = (props:any) => {
 
-  const start = ['78vh','82vh','86vh','90vh', '94vh','96vh']
-  const finish = ['0vh','16vh','37vh','58vh', '79vh','100vh']
+  const start = ['78svh','82svh','86svh','90svh', '94svh','96svh']
+  const finish = ['0svh','16svh','37svh','58svh', '79svh','100svh']
 
 
   return (

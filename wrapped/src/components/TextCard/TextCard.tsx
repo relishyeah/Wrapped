@@ -11,7 +11,7 @@ type textCardProps={
 export const TextCard = (props:textCardProps) => {
  
  const halo = 
- <svg className='halo' width="11.5vh" height="11.5vh" viewBox="0 0 130 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+ <svg className='halo' width="11.5svh" height="11.5svh" viewBox="0 0 130 130" fill="none" xmlns="http://www.w3.org/2000/svg">
  <circle cx="65" cy="65" r="63" stroke="#fff" strokeWidth="4"/>
  </svg>
  

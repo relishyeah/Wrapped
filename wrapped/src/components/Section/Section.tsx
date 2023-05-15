@@ -32,7 +32,7 @@ const Section = (props:SectionProps) =>{
             style ={{'backgroundColor': props.backgroundColor,
             'justifyContent':props.justify,
             'top':props.position,
-            'height':props.name?'16vh':'21vh',
+            'height':props.name?'16svh':'21svh',
             'alignItems':props.name?'end':'center'
         }}>
             <div className={"spacer-top "+props.id}></div>

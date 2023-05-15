@@ -9,7 +9,7 @@
 .container{
   background-color: #177156;
   width: 100%;
-  height: 100dvh;
+  height: 100svh;
   padding: 2vh 2vw;
   display: grid;
   background-color:#224b2b;
@@ -31,11 +31,12 @@ svg{
 
 .box-top {  
   position: relative;
-  margin-top: 17dvh;
+  margin-top: 17svh;
   z-index: 10;
   margin-bottom: 0;
-  width:50dvh;
+  width:50svh;
   height: auto;
+  opacity: 1;
   transition:all .5s ease-in-out;
 }
 
@@ -44,16 +45,16 @@ svg{
 }
 
 .open {  
-  margin-top: 0dvh;
-  margin-bottom: 17dvh;
+  margin-top: 0svh;
+  margin-bottom: 17svh;
   transition:all .5s ease-in-out;
   z-index: 3;
 }
 
 .spotify{
   position: absolute;
-  top: 28dvh;
-  width:30dvh;
+  top: 28svh;
+  width:30svh;
   max-width: 175px;
   height: auto;
   margin:auto;
@@ -61,14 +62,14 @@ svg{
 }
 
 .move{
-  top:17.5dvh;
+  top:17.5svh;
   left:0;
   transition: all .6s ease-in-out;
 }
 
 .present{
   position: relative;
-  margin-top:-2dvh;
+  margin-top:-2svh;
   width:auto;
   overflow: hidden;
 }
@@ -80,7 +81,7 @@ svg{
   max-width: 250px;
   position: relative;
   transition: all .5s ease-in-out;
-  width:50dvh;
+  width:50svh;
   height: auto;
 }
 
@@ -117,8 +118,8 @@ svg{
 }
 
 .noShadow{
-  visibility: hidden;
-  transition: all .1s ease-out;
+  opacity: 0;
+  transition: all .3s ease-out;
 }
 
 @keyframes tilt-shaking {
@@ -127,4 +128,8 @@ svg{
   50% { transform: rotate(0eg); }
   75% { transform: rotate(-5deg); }
   100% { transform: rotate(0deg); }
+}
+
+.box-top:hover{
+  opacity:0
 }

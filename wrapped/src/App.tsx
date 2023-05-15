@@ -10,7 +10,8 @@ function App() {
   const [token, setToken] = useState<string|null>('');
   const [loggedIn, setLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true)
-  const [animate,setAnimate] = useState(false)
+  const [animate,setAnimate] = useState(false);
+  const [shake,setShake] = useState(false)
   const [percent,setPercent] = useState(0);
   const [name,setName] = useState('')
   const [photo,setPhoto] = useState('')
@@ -28,9 +29,17 @@ function App() {
         token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1]
         window.location.hash = ""
         window.localStorage.setItem("access_token", token)
+        setShake(!shake)
+        setTimeout(() => {
+            setAnimate(true);
+          }, 1450);
+        setTimeout(() => {
+          setLoggedIn(true)
+        }, 3700);
     }
 
     setToken(token)
+    
 
 }, [])
 
@@ -40,7 +49,7 @@ function App() {
              <div className={(loggedIn && !loading) ?"title moveMe" : "title"}>
       Wrapped,<br/>Wrapped
       </div> 
-      {!token && <Welcome setAnimate={setAnimate} setLoading={setLoading} setLoggedIn={setLoggedIn} animate={animate} setPercent={setPercent}  />}
+      <Welcome  animate={animate} loggedIn={loggedIn} token={token} shake={shake} />
 
       {token &&<Callback 
         setLoading = {setLoading} 
