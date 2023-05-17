@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import { Routes, Route} from 'react-router-dom'
 import Home from './pages/Home/Home'
 import Welcome from './pages/Welcome/Welcome';
 import Callback from './pages/Callback'
@@ -12,13 +11,13 @@ function App() {
   const [loading, setLoading] = useState(true)
   const [animate,setAnimate] = useState(false);
   const [shake,setShake] = useState(false)
-  const [percent,setPercent] = useState(0);
   const [name,setName] = useState('')
   const [photo,setPhoto] = useState('')
   const [years,setYears] = useState([0,0,0])
   const [topSong,setTopSong] = useState(['',0])
   const [topArtist,setTopArtist] = useState(['',0])
   const [topAlbum,setTopAlbum] = useState(['',0])
+  const [textbox,setTextbox] = useState(false);
 
   useEffect(() => {
     const hash = window.location.hash
@@ -45,11 +44,15 @@ function App() {
 
   return (
       <div className="App">
+       <div className={textbox ? "textbox" : "textbox noShadow"}>
+        Make sure to follow all of your Wrapped playlists
+          
+        </div>
          <div className="container">
              <div className={(loggedIn && !loading) ?"title moveMe" : "title"}>
       Wrapped,<br/>Wrapped
       </div> 
-      <Welcome  animate={animate} loggedIn={loggedIn} token={token} shake={shake} />
+      <Welcome  animate={animate} loggedIn={loggedIn} token={token} shake={shake} setTextbox={setTextbox} textbox={textbox}/>
 
       {token &&<Callback 
         setLoading = {setLoading} 
