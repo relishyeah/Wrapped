@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Wrapped/static/css/main.4c7b2968.css",
-    "main.js": "/Wrapped/static/js/main.0b8ecf41.js",
+    "main.css": "/Wrapped/static/css/main.80f3bd07.css",
+    "main.js": "/Wrapped/static/js/main.2c2c97f4.js",
     "static/js/787.2b0d0349.chunk.js": "/Wrapped/static/js/787.2b0d0349.chunk.js",
     "index.html": "/Wrapped/index.html",
     "static/media/wave2.svg": "/Wrapped/static/media/wave2.3b3e70037a6cd4bdfca6.svg",
@@ -10,12 +10,12 @@
     "static/media/wave4.svg": "/Wrapped/static/media/wave4.11581d954d9e89532c54.svg",
     "static/media/wave1.svg": "/Wrapped/static/media/wave1.2baaaffd5f4410796494.svg",
     "static/media/wave3.svg": "/Wrapped/static/media/wave3.f04b4fd7811d5bbf9559.svg",
-    "main.4c7b2968.css.map": "/Wrapped/static/css/main.4c7b2968.css.map",
-    "main.0b8ecf41.js.map": "/Wrapped/static/js/main.0b8ecf41.js.map",
+    "main.80f3bd07.css.map": "/Wrapped/static/css/main.80f3bd07.css.map",
+    "main.2c2c97f4.js.map": "/Wrapped/static/js/main.2c2c97f4.js.map",
     "787.2b0d0349.chunk.js.map": "/Wrapped/static/js/787.2b0d0349.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4c7b2968.css",
-    "static/js/main.0b8ecf41.js"
+    "static/css/main.80f3bd07.css",
+    "static/js/main.2c2c97f4.js"
   ]
 }
