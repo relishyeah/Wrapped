@@ -22,7 +22,7 @@ font-size: 1.5rem;
 font-weight: bold;
 color: #eee;
 text-align: left;
-width:400px;
+width:80%;
 height: 200px;
 top:0;
 z-index: 1000;
@@ -36,7 +36,7 @@ overflow:hidden;
 
 .textbox{
   position: absolute;
-  top:50.5%;
+  top:50.5svh;
   margin:auto;
   background-color: #5857F3;
   width: 40svh;
