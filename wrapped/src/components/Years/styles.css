@@ -12,12 +12,16 @@
     justify-content: space-evenly;
 }
 .yearsText{
-    font-size: 2vh
+    
 }
 
 .yearsContainer{
     width: 100%;
-    position: relative;
+    left:0;
+    right:0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-55%);
     max-width: 100svh;
     height: 15svh;
     margin: auto;

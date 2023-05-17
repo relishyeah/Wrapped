@@ -2,7 +2,7 @@
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
     flex:1;
     padding-left: 3vw;
     max-width: 100svh;
@@ -11,7 +11,13 @@
 
 .largeText{
     font-size: 5svh;
+    width: 30svh;
     text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    left:0;
+    right:0;
+    margin: -.5svh auto 0;
 }
 
 .sideText{
@@ -20,8 +26,13 @@
 }
 
 .artistName{
-    margin-top:-.5svh ;
-    margin-bottom: -1.5svh;
+    width: 30svh;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    left:0;
+    right:0;
+    margin: -.5svh auto -1.5svh;
 }
 
 .leftSide{
@@ -40,7 +51,7 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    max-width: 100vh;
+    max-width: 100svh;
     margin: auto;
 }
 .album{
@@ -63,4 +74,5 @@
     max-width: 100vh;
     text-align: left;
     padding-left: 5vw;
+    font-size: 3svh;
 }

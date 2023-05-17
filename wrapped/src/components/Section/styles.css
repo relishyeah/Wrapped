@@ -61,8 +61,16 @@ select{
 .abt{
     text-decoration: none;
     color:#333;
+    font-size: 2svh;
+    
+    font-weight: bold ;
+}
+
+.abtLink{
+    text-decoration: none;
+    color:#333;
     font-size: 2.2svh;
-    font-weight: bold;
+    font-weight: bold ;
 }
 
 .button{

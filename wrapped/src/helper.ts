@@ -28,8 +28,8 @@ type playlist={
 }
  
 const clientId: string = '82c274ec26b84f0393a09e74f288e3cc';
-const redirectUri:string = 'https://relishyeah.github.io/Wrapped/';
-//const redirectUri:string= 'http://localhost:3000/'
+//const redirectUri:string = 'https://relishyeah.github.io/Wrapped/';
+const redirectUri:string= 'http://localhost:3000/'
 
 
 export const  authorize = ():string => {
@@ -56,7 +56,7 @@ export const getProfile = async()=> {
     return [data.id,data.display_name,data.images[0].url]
   } catch (error) {
     console.error(error);
-    return ['1','2','3']
+    return ['1','Error','3']
   }
   }
 
@@ -75,23 +75,31 @@ export const getProfile = async()=> {
   }
 
   const playlistCall = async(accessToken:string|null):Promise<playlist[]> =>{
+    let next = 'https://api.spotify.com/v1/me/playlists?limit=50&offset=0'
     let playlists:Array<playlist>=[];
-    const response = await fetch('https://api.spotify.com/v1/search?q=Your+Top+Songs&type=playlist&offset=0', {
-      headers: {
-        Authorization: 'Bearer ' + accessToken
-    }});
-    const json = await response.json()
-    console.log(json)
     const songRegex =/Your Top Songs/igm
     const yearRegex = /\d{4}/gm
-    json.playlists.items.forEach((obj:any) => {
+    while(next){
+      const response = await fetch(next, {
+        headers: {
+          Authorization: 'Bearer ' + accessToken
+      }});
+      const json = await response.json()
+      
+      console.log(json)
+      next = json.next
+      
+    json.items.forEach((obj:any) => {
       if (obj.name.match(songRegex) && obj.owner.id === 'spotify'){
         const id:string = obj.id
         const year:string = obj.name.match(yearRegex)[0]
         playlists.push({id:id,year:year} );
       }
     })
-    console.log(playlists)
+    }
+    
+    
+    console.log('playlists',playlists)
     return playlists
   }
 
