@@ -32,15 +32,10 @@ const redirectUri:string = 'https://relishyeah.github.io/Wrapped/';
 //const redirectUri:string= 'http://localhost:3000/'
 
 
-export const  authorize = ():string => {
+export const authorize = ():string => {
   let scope:string = 'playlist-read-private';
 
    return 'https://accounts.spotify.com/authorize?response_type=token' +'&client_id=' + encodeURIComponent(clientId )+'&scope=' + encodeURIComponent(scope)+'&redirect_uri=' + encodeURIComponent(redirectUri)
-      
-}
-
-const nullToEmpty = (str:string|null):string =>{
-    return str === null ? '' : str;
 }
 
 export const getProfile = async()=> {
@@ -53,7 +48,10 @@ export const getProfile = async()=> {
     });
   
     const data = await response.json();
-    return [data.id,data.display_name,data.images[0].url]
+    const id = data.id;
+    const name = data.display_name;
+    const photo = (data.images && data.images[0].url) ? data.images[0].url : 'https://upload.wikimedia.org/wikipedia/commons/7/74/Spotify_App_Logo.svg'
+    return [id,name,photo]
   } catch (error) {
     console.error(error);
     return ['1','Error','3']
