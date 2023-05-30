@@ -18,12 +18,24 @@ function App() {
   const [topArtist,setTopArtist] = useState(['',0])
   const [topAlbum,setTopAlbum] = useState(['',0])
   const [textbox,setTextbox] = useState(false);
+  const [demo,setDemo] = useState(true);
 
   useEffect(() => {
-    const hash = window.location.hash
+    let hash = window.location.hash
     let token = window.localStorage.getItem("token")
-
+    console.log(hash)
+    if (hash === '#demo'){
+      window.location.hash = ""
+      setDemo(true);
+      hash = ''
+    }
     if (!token && hash) {
+      
+      //@ts-ignore
+      const state =hash.substring(1).split("&").find(elem => elem.startsWith("state")).split("=")[1]
+      if (state === 'true'){
+        setDemo(true)
+      }
       //@ts-ignore
         token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1]
         window.location.hash = ""
@@ -52,7 +64,7 @@ function App() {
              <div className={(loggedIn && !loading) ?"title moveMe" : "title"}>
       Wrapped,<br/>Wrapped
       </div> 
-      <Welcome  animate={animate} loggedIn={loggedIn} token={token} shake={shake} setTextbox={setTextbox} textbox={textbox}/>
+      <Welcome  animate={animate} loggedIn={loggedIn} token={token} shake={shake} setTextbox={setTextbox} textbox={textbox} demo={demo}/>
 
       {token &&<Callback 
         setLoading = {setLoading} 

@@ -9,6 +9,7 @@ export type WelcomeProps = {
     shake:boolean;
     setTextbox:(b:boolean) => void;
     textbox:boolean;
+    demo:boolean;
 }
 
 const Welcome = (props:WelcomeProps) => {
@@ -80,7 +81,7 @@ const Welcome = (props:WelcomeProps) => {
             
 
            {(!props.token && 
-           props.textbox) && <a href={authorize()} className='logIn'>
+           props.textbox) && <a href={authorize(props.demo)} className='logIn'>
                 Continue
             </a>  }
 

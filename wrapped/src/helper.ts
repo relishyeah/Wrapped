@@ -32,10 +32,10 @@ const redirectUri:string = 'https://relishyeah.github.io/Wrapped/';
 //const redirectUri:string= 'http://localhost:3000/'
 
 
-export const authorize = ():string => {
+export const authorize = (demo:boolean):string => {
   let scope:string = 'playlist-read-private';
 
-   return 'https://accounts.spotify.com/authorize?response_type=token' +'&client_id=' + encodeURIComponent(clientId )+'&scope=' + encodeURIComponent(scope)+'&redirect_uri=' + encodeURIComponent(redirectUri)
+   return 'https://accounts.spotify.com/authorize?response_type=token' +'&client_id=' + encodeURIComponent(clientId )+'&scope=' + encodeURIComponent(scope)+'&redirect_uri=' + encodeURIComponent(redirectUri)  + '&state=' + encodeURIComponent(demo)
 }
 
 export const getProfile = async()=> {
