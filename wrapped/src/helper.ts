@@ -48,10 +48,9 @@ export const getProfile = async()=> {
     });
   
     const data = await response.json();
-    const id = data.id;
     const name = data.display_name;
     const photo = (data.images && data.images[0].url) ? data.images[0].url : 'https://upload.wikimedia.org/wikipedia/commons/7/74/Spotify_App_Logo.svg'
-    return [id,name,photo]
+    return [name,photo]
   } catch (error) {
     console.error(error);
     return ['1','Error','3']
@@ -68,7 +67,6 @@ export const getProfile = async()=> {
     });
   
     const data = await response.json();
-    console.log(data)
     return [data.images[1].url,data.name]
   }
 
@@ -84,7 +82,6 @@ export const getProfile = async()=> {
       }});
       const json = await response.json()
       
-      console.log(json)
       next = json.next
       
     json.items.forEach((obj:any) => {
@@ -95,9 +92,6 @@ export const getProfile = async()=> {
       }
     })
     }
-    
-    
-    console.log('playlists',playlists)
     return playlists
   }
 
@@ -162,13 +156,11 @@ const getCounts = (years:any)=>{
       uniqueSongs.add(item.id)
     }
   }
-  console.log(songCounter)
   if (Object.keys(songCounter).length !== 0){
     topSong = songCounter[Object.keys(songCounter).reduce((a, b) => songCounter[a][0] > songCounter[b][0] ? a : b)]
   topSong[3] = Math.floor((topSong[3] as number) / (topSong[0] as number))
   }
   
-  console.log('ttt',topSong)
   topAlbums =getHighestN(albumCounter,4)
   return [topSong,topAlbums,[topArtist,...artistCounter[topArtist]],Object.keys(songCounter).length]
 }
@@ -204,10 +196,9 @@ const getTracks = async(playlists:Array<playlist>,accessToken:string|null) =>{
 
 
   export const getPlaylists = async(setName:(s:string)=>void,setPhoto:(s:string)=>void,setYears:(n:any)=>void,setTopSong:(a:Array<string|number>)=>void,setTopArist:(a:Array<string|number>)=>void,setTopAlbum:(a:Array<string|number>)=>void)=> {
-    const  [id,name,photo] = await getProfile()
+    const  [name,photo] = await getProfile()
     setName(name)
     setPhoto(photo)
-    console.log(id,name,photo)
     let accessToken = localStorage.getItem('access_token');
     let now = Date.now()
     const playlists =  await playlistCall(accessToken)
@@ -216,12 +207,9 @@ const getTracks = async(playlists:Array<playlist>,accessToken:string|null) =>{
     const tracks = temp[0]
     const explicit:number = temp[1] / (playlists.length)
     const counts = getCounts(tracks)
-    console.log(counts)
-    console.log(counts[2][0])
     const topSong = await getArtist(counts[0][2]);
     const topArtistReal =await getArtist(counts[2][0])
     setTopSong([...counts[0],...topSong])
-    console.log([...counts[0],...topSong])
     setTopAlbum(counts[1])
     setTopArist([...counts[2],...topArtistReal])
     setYears([playlists.length,counts[3],explicit])
