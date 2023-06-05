@@ -62,7 +62,6 @@ select{
     text-decoration: none;
     color:#333;
     font-size: 2svh;
-    
     font-weight: bold ;
 }
 
@@ -71,7 +70,16 @@ select{
     color:#333;
     font-size: 2.2svh;
     font-weight: bold ;
+    margin-right:20px;
+    padding-right:20px;
+    transition-duration: .3s;
 }
+
+.abtLink:hover {
+    color:#555;
+    font-size: 3svh;
+    transition-duration: .2s;
+  }
 
 .button{
     color:#eee;

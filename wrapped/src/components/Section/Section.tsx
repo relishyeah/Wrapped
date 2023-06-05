@@ -38,7 +38,12 @@ const Section = (props:SectionProps) =>{
             <div className={"spacer-top "+props.id}></div>
             
             <div className={props.className}>
-                {props.about && <a  className='abtLink' href='https://www.quinnrelyea.com'>quinnrelyea.com </a>}
+                {props.about && 
+                <nav>
+                <a  className='abtLink' href='https://www.quinnrelyea.com'>quinnrelyea.com </a>
+                <a  className='abtLink' href='https://www.quinnrelyea.com'>about </a>
+              </nav>
+                }
                 {props.name &&props.photo &&
                 <Header className='noShow' name={props.name} photo={props.photo}/> }
 
