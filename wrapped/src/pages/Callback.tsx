@@ -3,8 +3,6 @@ import { getPlaylists } from '../helper';
 
 
 export type callbackProps ={
-    setLoading: (b:boolean)=>void,
-    setLoggedIn: (b:boolean)=>void,
     setName:(s:string)=>void;
     setPhoto:(s:string)=>void;
     setYears:(n:any)=>void;

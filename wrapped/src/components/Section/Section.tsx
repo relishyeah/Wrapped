@@ -3,6 +3,8 @@ import {Header} from '../Header/Header'
 import {Years} from '../Years/Years'
 import { TextCard } from '../TextCard/TextCard';
 import './styles.css';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
 
 export type SectionProps = {
     justify?: 'left' | 'right'| 'center';
@@ -19,12 +21,12 @@ export type SectionProps = {
     topArtist?:Array<number|string>;
     topAlbum?:Array<number|string>;
     topSong?:Array<number|string>;
-    loading:boolean;
-    className?:string;
 }
 
 
 const Section = (props:SectionProps) =>{
+    const loading:boolean = useSelector((state: RootState) => state.loading.value)
+    const loggedIn:boolean = useSelector((state: RootState) => state.loggedIn.value)
 
     return(
         <>
@@ -37,7 +39,7 @@ const Section = (props:SectionProps) =>{
         }}>
             <div className={"spacer-top "+props.id}></div>
             
-            <div className={props.className}>
+            <div className={ props.about?"":(loggedIn &&!loading) ? 'normal' : 'hidden'}>
                 {props.about && 
                 <nav>
                 <a  className='abtLink' href='https://www.quinnrelyea.com'>quinnrelyea.com </a>

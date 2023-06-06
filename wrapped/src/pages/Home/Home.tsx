@@ -1,8 +1,14 @@
 import './styles.css';
+import { RootState } from '../../redux/store';
+import { useSelector } from 'react-redux'
+
 import Loading from '../../components/Loading/Loading';
 import Section from '../../components/Section/Section';
 
 const Home = (props:any) => {
+  const loading:boolean = useSelector((state: RootState) => state.loading.value)
+  const loggedIn:boolean = useSelector((state: RootState) => state.loggedIn.value)
+
 
   const start = ['78svh','82svh','86svh','90svh', '94svh','96svh']
   const finish = ['0svh','16svh','37svh','58svh', '79svh','100svh']
@@ -10,62 +16,51 @@ const Home = (props:any) => {
 
   return (
     <div className='content'>
-      <Loading loggedIn={props.loggedIn} setLoading={props.setLoading}/>
+      <Loading />
       
       <Section 
-      className={props.className}
       backgroundColor='#1515A3'
       justify='left'  
-      position={props.loading?start[0]:finish[0]} 
+      position={(loggedIn && !loading) ?finish[0]:start[0]} 
       id='layer0'
       name={props.name}
-      photo={props.photo}
-      loading={props.loading}/>
+      photo={props.photo}/>
 
       <Section 
-      className={props.className}
       backgroundColor='#2A27B6' 
       justify='left'   
-      position={props.loading?start[1]:finish[1]} 
+      position={(loggedIn && !loading) ?finish[1]:start[1]} 
       id='layer1'  
-      years={props.years} 
-      loading={props.loading} />
+      years={props.years} />
 
       <Section 
-      className={props.className}
       backgroundColor='#3B37CA' 
       justify='left'   
-      position={props.loading?start[2]:finish[2]} 
+      position={(loggedIn && !loading) ?finish[2]:start[2]} 
       id='layer2' 
-      topSong={props.topSong} 
-      loading={props.loading} 
+      topSong={props.topSong}  
       title='Top Song'/>
 
       <Section 
-      className={props.className}
       backgroundColor='#4A47DE' 
       justify='left'   
-      position={props.loading?start[3]:finish[3]} 
+      position={loggedIn && !loading ?finish[3]:start[3]} 
       id='layer3' 
       topArtist={props.topArtist} 
-      loading={props.loading} 
       title='Top Artist'/>
 
       <Section 
-      className={props.className}
       backgroundColor='#5857F3' 
       justify='center'   
-      position={props.loading?start[4]:finish[4]} 
+      position={loggedIn && !loading ?finish[4]:start[4]} 
       id='layer4' 
       topAlbum={props.topAlbum} 
-      loading={props.loading} 
       title='Top Albums'/>
 
     <Section 
-    backgroundColor='#6b6bfe'
-      position={props.loading?start[5]:finish[5]} 
+      backgroundColor='#6b6bfe'
+      position={loggedIn && !loading ?finish[5]:start[5]} 
       id='layer5'
-      loading={props.loading}
       about
       justify='center'
     />

@@ -1,14 +1,16 @@
 import React, {useState, useEffect} from 'react';
+import { useDispatch,useSelector } from 'react-redux';
 import Home from './pages/Home/Home'
 import Welcome from './pages/Welcome/Welcome';
 import Callback from './pages/Callback'
-import './App.css';
+import Ftux from './components/Ftux/Ftux';
 
+import './App.css';
+import { logIn } from './redux/slices/loggedInSlice';
+import { RootState } from './redux/store';
 
 function App() {
   const [token, setToken] = useState<string|null>('');
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [loading, setLoading] = useState(true)
   const [animate,setAnimate] = useState(false);
   const [shake,setShake] = useState(false)
   const [name,setName] = useState('')
@@ -19,6 +21,10 @@ function App() {
   const [topAlbum,setTopAlbum] = useState(['',0])
   const [textbox,setTextbox] = useState(false);
   const [demo,setDemo] = useState(true);
+  const dispatch = useDispatch()
+  const loggedIn:boolean = useSelector((state: RootState) => state.loggedIn.value)
+  const loading:boolean = useSelector((state: RootState) => state.loading.value)
+  
 
   useEffect(() => {
     let hash = window.location.hash
@@ -45,7 +51,7 @@ function App() {
             setAnimate(true);
           }, 1450);
         setTimeout(() => {
-          setLoggedIn(true)
+          dispatch(logIn())
         }, 3700);
     }
 
@@ -56,19 +62,14 @@ function App() {
 
   return (
       <div className="App">
-       <div className={textbox ? "textbox" : "textbox noShadow"}>
-        Make sure to follow all of your Wrapped playlists
-          
-        </div>
+        {textbox && <Ftux/>}
          <div className="container">
              <div className={(loggedIn && !loading) ?"title moveMe" : "title"}>
       Wrapped,<br/>Wrapped
       </div> 
-      <Welcome  animate={animate} loggedIn={loggedIn} token={token} shake={shake} setTextbox={setTextbox} textbox={textbox} demo={demo}/>
+      <Welcome  animate={animate} token={token} shake={shake} setTextbox={setTextbox} textbox={textbox} demo={demo}/>
 
       {token &&<Callback 
-        setLoading = {setLoading} 
-        setLoggedIn={setLoggedIn} 
         setName={setName} 
         setPhoto={setPhoto} 
         setYears={setYears}
@@ -76,9 +77,7 @@ function App() {
         setTopArtist={setTopArtist}
         setTopAlbum={setTopAlbum}
         />}
-      <Home loggedIn ={loggedIn}
-       loading={loading} 
-       setLoading={setLoading} 
+      <Home 
        animate={animate} 
        name={name} 
        photo={photo} 
@@ -86,7 +85,6 @@ function App() {
        topSong={topSong}
        topAlbum={topAlbum}
        topArtist={topArtist}
-       className={(loading) ? 'hidden' : 'normal'}
        />
         
       </div>

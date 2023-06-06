@@ -28,8 +28,8 @@ type playlist={
 }
  
 const clientId: string = '82c274ec26b84f0393a09e74f288e3cc';
-const redirectUri:string = 'https://relishyeah.github.io/Wrapped/';
-//const redirectUri:string= 'http://localhost:3000/'
+//const redirectUri:string = 'https://relishyeah.github.io/Wrapped/';
+const redirectUri:string= 'http://localhost:3000/'
 
 
 export const authorize = (demo:boolean):string => {
@@ -87,6 +87,7 @@ export const getProfile = async()=> {
     json.items.forEach((obj:any) => {
       if (obj.name.match(songRegex) && obj.owner.id === 'spotify'){
         const id:string = obj.id
+        console.log(obj.images[0].url)
         const year:string = obj.name.match(yearRegex)[0]
         playlists.push({id:id,year:year} );
       }

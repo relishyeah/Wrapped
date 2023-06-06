@@ -7,8 +7,6 @@
   margin: 0;
 }
 
-
-
 .container{
 background-color: #177156;
 width: 100%;
@@ -32,26 +30,6 @@ overflow:hidden;
 
 .moveMe{
   transform: translateY(-100%) ;
-}
-
-.textbox{
-  position: absolute;
-  top:50.5svh;
-  margin:auto;
-  background-color: #5857F3;
-  width: 40svh;
-  height:8svh;
-  left:0;
-  right: 0;
-  z-index: 200;
-  border-radius: .5em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color:#eee;
-  font-size: 2.3svh;
-  opacity: 1;
-  transition: all .3s ease-out;
 }
 
 .noShadow{

@@ -1,4 +1,3 @@
-import React from 'react'
 import './styles.css'
 export const Header = (props:any) => {
   const bow = <svg className='bow' width="94" height="43" viewBox="0 0 94 43" fill="none" xmlns="http://www.w3.org/2000/svg">
