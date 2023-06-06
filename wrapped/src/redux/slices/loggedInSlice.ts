@@ -8,6 +8,8 @@ const initialState: LoggedInState = {
   value: false,
 }
 
+// boolean to indicate a user is logged in
+// TODO: Make state persistent, store expires_in for token
 export const loggedInSlice = createSlice({
   name: 'loggedIn',
   initialState,

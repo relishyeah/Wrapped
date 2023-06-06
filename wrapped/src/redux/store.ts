@@ -1,11 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { loadingReducer } from './slices/loadingSlice'
 import { loggedInReducer } from './slices/loggedInSlice'
+import { animateReducer } from './slices/animateSlice'
+import { shakeReducer } from './slices/shakeSlice'
  
 export const store = configureStore({
   reducer: {
     loading: loadingReducer,
-    loggedIn:loggedInReducer
+    loggedIn:loggedInReducer,
+    animate: animateReducer,
+    shake: shakeReducer
   },
 })
 

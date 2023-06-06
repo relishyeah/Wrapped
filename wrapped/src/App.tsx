@@ -8,11 +8,11 @@ import Ftux from './components/Ftux/Ftux';
 import './App.css';
 import { logIn } from './redux/slices/loggedInSlice';
 import { RootState } from './redux/store';
+import { startShake } from './redux/slices/shakeSlice';
+import { startAnimate } from './redux/slices/animateSlice';
 
 function App() {
   const [token, setToken] = useState<string|null>('');
-  const [animate,setAnimate] = useState(false);
-  const [shake,setShake] = useState(false)
   const [name,setName] = useState('')
   const [photo,setPhoto] = useState('')
   const [years,setYears] = useState([0,0,0])
@@ -46,9 +46,9 @@ function App() {
         token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1]
         window.location.hash = ""
         window.localStorage.setItem("access_token", token)
-        setShake(!shake)
+        dispatch(startShake())
         setTimeout(() => {
-            setAnimate(true);
+            dispatch(startAnimate());
           }, 1450);
         setTimeout(() => {
           dispatch(logIn())
@@ -67,7 +67,7 @@ function App() {
              <div className={(loggedIn && !loading) ?"title moveMe" : "title"}>
       Wrapped,<br/>Wrapped
       </div> 
-      <Welcome  animate={animate} token={token} shake={shake} setTextbox={setTextbox} textbox={textbox} demo={demo}/>
+      <Welcome  token={token}  setTextbox={setTextbox} textbox={textbox} demo={demo}/>
 
       {token &&<Callback 
         setName={setName} 
@@ -78,7 +78,6 @@ function App() {
         setTopAlbum={setTopAlbum}
         />}
       <Home 
-       animate={animate} 
        name={name} 
        photo={photo} 
        years={years}

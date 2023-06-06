@@ -9,6 +9,7 @@ const initialState: LoadingState = {
   value: false,
 }
 
+//Boolean to indiate if a fetch is happening
 export const loadingSlice = createSlice({
   name: 'loading',
   initialState,
