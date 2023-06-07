@@ -21,13 +21,14 @@ const Welcome = (props:WelcomeProps) => {
         return loggedIn ? "box-top open noShadow" :
         animate ? "box-top open" : shake ?"box-top shake": "box-top"
     }
+    const boxColor = '#169873'
 
     return (
         
         <div className="content">
             
             <svg className={topClass()}viewBox="0 0 483 238" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 135C0 132.791 1.79086 131 4 131H479C481.209 131 483 132.791 483 135V234C483 236.209 481.209 238 479 238H4.00001C1.79087 238 0 236.209 0 234V135Z" fill="#3B37CA"/>
+                <path d="M0 135C0 132.791 1.79086 131 4 131H479C481.209 131 483 132.791 483 135V234C483 236.209 481.209 238 479 238H4.00001C1.79087 238 0 236.209 0 234V135Z" fill={boxColor}/>
                 <path d="M247.914 121.018C338.319 124.862 437.093 92.2163 406.265 38.3154C375.437 -15.5855 282.928 40.142 247.914 121.018Z" stroke="#DADBDD" strokeWidth="30"/>
                 <path d="M235.465 121.018C145.06 124.862 46.286 92.2163 77.1136 38.3154C107.941 -15.5855 200.451 40.142 235.465 121.018Z" stroke="#DADBDD" strokeWidth="30"/>
                 <path d="M272.999 132L273 238L211 238L211 132L272.999 132Z" fill="#DADBDD"/>
@@ -38,9 +39,9 @@ const Welcome = (props:WelcomeProps) => {
                 
                 <svg className={loggedIn ?"box-bottom noShadow" : "box-bottom"}
                      viewBox="0 0 482 289" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="11" width="459" height="289" rx="4" fill="#3B37CA"/>
+                    <rect x="11" width="459" height="289" rx="4" fill={boxColor}/>
                     <g className={animate?'noShadow': ''} filter="url(#filter0_d_42_4)">
-                    <rect x="272" width="195" height="1" rx="0.5" fill="#3B37CA"/>
+                    <rect x="272" width="195" height="1" rx="0.5" fill={boxColor}/>
                     </g>
                     <g className={animate?'noShadow': ''} filter="url(#filter1_d_42_4)">
                     <rect x="14" width="196" height="1" rx="0.5" fill="#3B37CA"/>
@@ -89,7 +90,7 @@ const Welcome = (props:WelcomeProps) => {
 
             {(!props.token && 
            !props.textbox) && <a onClick={()=>props.setTextbox(true)} className='logIn'>
-                See yours
+                See Yours
             </a>  }
             
         </div> );

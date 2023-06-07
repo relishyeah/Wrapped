@@ -32,7 +32,7 @@
     height:5svh;
     width:298px;
     border-radius:2.5em;
-    background-color: #0a22ba;
+    background-color: #1ed760;
     left:0;
     right:0;
     margin: calc(175px + 5svh) auto auto auto;
@@ -42,7 +42,7 @@
     position: absolute;
     height:5svh;
     max-width: 302px;
-    background-color: #177156;
+    background-color: #5857f3;
     left:-2px;
     margin: auto;
     transition: width 10s ease-out, opacity .1s ease-out;

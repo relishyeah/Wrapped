@@ -11,7 +11,7 @@ const Home = (props:any) => {
 
 
   const start = ['78svh','82svh','86svh','90svh', '94svh','96svh']
-  const finish = ['0svh','16svh','37svh','58svh', '79svh','100svh']
+  const finish = ['-2svh','16svh','37svh','58svh', '79svh','100svh']
 
 
   return (
@@ -19,7 +19,7 @@ const Home = (props:any) => {
       <Loading />
       
       <Section 
-      backgroundColor='#1515A3'
+      backgroundColor='#4d49e1'
       justify='left'  
       position={(loggedIn && !loading) ?finish[0]:start[0]} 
       id='layer0'
@@ -27,14 +27,14 @@ const Home = (props:any) => {
       photo={props.photo}/>
 
       <Section 
-      backgroundColor='#2A27B6' 
+      backgroundColor='#413ccf' 
       justify='left'   
       position={(loggedIn && !loading) ?finish[1]:start[1]} 
       id='layer1'  
       years={props.years} />
 
       <Section 
-      backgroundColor='#3B37CA' 
+      backgroundColor='#352ebe' 
       justify='left'   
       position={(loggedIn && !loading) ?finish[2]:start[2]} 
       id='layer2' 
@@ -42,7 +42,7 @@ const Home = (props:any) => {
       title='Top Song'/>
 
       <Section 
-      backgroundColor='#4A47DE' 
+      backgroundColor='#2820ad' 
       justify='left'   
       position={loggedIn && !loading ?finish[3]:start[3]} 
       id='layer3' 
@@ -50,7 +50,7 @@ const Home = (props:any) => {
       title='Top Artist'/>
 
       <Section 
-      backgroundColor='#5857F3' 
+      backgroundColor='#18119c' 
       justify='center'   
       position={loggedIn && !loading ?finish[4]:start[4]} 
       id='layer4' 
@@ -58,7 +58,7 @@ const Home = (props:any) => {
       title='Top Albums'/>
 
     <Section 
-      backgroundColor='#6b6bfe'
+      backgroundColor='#00008B'
       position={loggedIn && !loading ?finish[5]:start[5]} 
       id='layer5'
       about
