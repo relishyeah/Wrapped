@@ -2,7 +2,7 @@ import {useEffect,useState} from 'react'
 import './styles.css';
 import { RootState } from '../../redux/store';
 import { useSelector, useDispatch } from 'react-redux'
-import { startLoad, stopLoad } from '../../redux/slices/loadingSlice';
+import { startLoad, stopLoad } from '../../redux/features/loadingSlice';
 
 const Loading = (props:any) => {
   const [percent,setPercent] = useState(0);

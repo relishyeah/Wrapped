@@ -1,15 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { loadingReducer } from './slices/loadingSlice'
-import { loggedInReducer } from './slices/loggedInSlice'
-import { animateReducer } from './slices/animateSlice'
-import { shakeReducer } from './slices/shakeSlice'
+import { loadingReducer } from './features/loadingSlice'
+import { loggedInReducer } from './features/loggedInSlice'
+import { animateReducer } from './features/animateSlice'
+import { shakeReducer } from './features/shakeSlice'
+import { tokenReducer } from './features/tokenSlice'
  
 export const store = configureStore({
   reducer: {
     loading: loadingReducer,
     loggedIn:loggedInReducer,
     animate: animateReducer,
-    shake: shakeReducer
+    shake: shakeReducer,
+    token: tokenReducer
   },
 })
 

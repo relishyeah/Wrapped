@@ -6,13 +6,13 @@ import Callback from './pages/Callback'
 import Ftux from './components/Ftux/Ftux';
 
 import './App.css';
-import { logIn } from './redux/slices/loggedInSlice';
+import { logIn } from './redux/features/loggedInSlice';
 import { RootState } from './redux/store';
-import { startShake } from './redux/slices/shakeSlice';
-import { startAnimate } from './redux/slices/animateSlice';
+import { startShake } from './redux/features/shakeSlice';
+import { startAnimate } from './redux/features/animateSlice';
+import { setToken } from './redux/features/tokenSlice';
 
 function App() {
-  const [token, setToken] = useState<string|null>('');
   const [name,setName] = useState('')
   const [photo,setPhoto] = useState('')
   const [years,setYears] = useState([0,0,0])
@@ -24,6 +24,7 @@ function App() {
   const dispatch = useDispatch()
   const loggedIn:boolean = useSelector((state: RootState) => state.loggedIn.value)
   const loading:boolean = useSelector((state: RootState) => state.loading.value)
+  const token:string = useSelector(((state: RootState) => state.token.value))
   
 
   useEffect(() => {
@@ -55,7 +56,7 @@ function App() {
         }, 3700);
     }
 
-    setToken(token)
+    dispatch(setToken(token))
     
 
 }, [])
@@ -67,7 +68,7 @@ function App() {
              <div className={(loggedIn && !loading) ?"title moveMe" : "title"}>
       Wrapped,<br/>Wrapped
       </div> 
-      <Welcome  token={token}  setTextbox={setTextbox} textbox={textbox} demo={demo}/>
+      <Welcome token={token}  setTextbox={setTextbox} textbox={textbox} demo={demo}/>
 
       {token &&<Callback 
         setName={setName} 
